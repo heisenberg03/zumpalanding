@@ -3,452 +3,654 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Zumpa — Where the Stage Meets the Crowd</title>
-  <meta name="description" content="Zumpa reimagines the entertainment event industry. Hire artists, event managers, or host your gig so top professionals can apply directly." />
-  <meta property="og:title" content="Zumpa — Where the Stage Meets the Crowd" />
-  <meta property="og:description" content="Hire artists, host events, and let talent come to you." />
+  <title>Zumpa — Discover Gigs & Talented Pros</title>
+  <meta name="description" content="Zumpa connects event hosts with top artists, performers, and event professionals across India. Post gigs, hire talent, build your portfolio — all in one app." />
+  <meta property="og:title" content="Zumpa — Discover Gigs & Talented Pros" />
+  <meta property="og:description" content="Post gigs, hire artists, apply to events. The platform built for both sides of the stage." />
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --purple:       #541AA3;
-      --purple-light: #6B2FC4;
-      --purple-dark:  #3A0F74;
-      --pink:         #FF488A;
-      --pink-light:   #FF6FA6;
-      --dark:         #0A0714;
-      --dark-2:       #100D20;
-      --glass:        rgba(255,255,255,0.05);
-      --glass-border: rgba(255,255,255,0.09);
-      --text:         #FFFFFF;
-      --muted:        rgba(255,255,255,0.55);
+      --purple-dark:  #3B0F7A;
+      --purple-deeper:#260A52;
+      --purple-soft:  #EDE8FA;
+      --purple-faint: #F5F0FF;
+      --pink:         #FF3372;
+      --bg:           #F5F5F5;
+      --white:        #FFFFFF;
+      --text:         #111827;
+      --text-mid:     #374151;
+      --text-muted:   #6B7280;
+      --border:       #E5E7EB;
     }
 
     html { scroll-behavior: smooth; }
-
     body {
-      font-family: 'Montserrat', sans-serif;
-      background: var(--dark);
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
       color: var(--text);
       overflow-x: hidden;
     }
 
-    /* ── NAV ───────────────────────────────────────────── */
+    /* ── NAV ─────────────────────────────────────────── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      padding: 1.25rem 2.5rem;
+      padding: .9rem 2.5rem;
       display: flex; align-items: center; justify-content: space-between;
-      background: rgba(10,7,20,0.75);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--glass-border);
+      background: var(--purple);
     }
-
-    .nav-logo {
-      font-size: 1.6rem; font-weight: 900; letter-spacing: 3px;
-      background: linear-gradient(130deg, #fff 30%, var(--pink-light) 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    .nav-logo { font-size: 1.5rem; font-weight: 900; color: #fff; letter-spacing: -.5px; }
+    .nav-links { display: flex; align-items: center; gap: 1.75rem; }
+    .nav-links a {
+      color: rgba(255,255,255,.7); font-size: .875rem; font-weight: 500;
+      text-decoration: none; transition: color .2s;
     }
-
-    .nav-btn {
-      padding: 0.6rem 1.5rem;
-      border-radius: 50px; border: none;
-      background: var(--pink); color: #fff;
-      font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.85rem;
-      cursor: pointer; text-decoration: none;
-      transition: transform .2s, box-shadow .2s;
+    .nav-links a:hover { color: #fff; }
+    .nav-cta {
+      background: rgba(255,255,255,.15); border: 1.5px solid rgba(255,255,255,.4);
+      color: #fff; padding: .5rem 1.25rem; border-radius: 50px;
+      font-size: .83rem; font-weight: 700; text-decoration: none;
+      transition: background .2s;
     }
-    .nav-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,72,138,.45); }
+    .nav-cta:hover { background: rgba(255,255,255,.25); }
+    @media (max-width: 640px) { nav { padding: .9rem 1.25rem; } .nav-links { display: none; } }
 
-    /* ── HERO ──────────────────────────────────────────── */
+    /* ── HERO ────────────────────────────────────────── */
     .hero {
-      min-height: 100vh;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      text-align: center; padding: 8rem 2rem 5rem;
+      background: var(--purple);
+      padding: 7.5rem 2rem 6rem;
+      text-align: center;
       position: relative; overflow: hidden;
     }
-
     .hero::before {
       content: '';
       position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse 90% 65% at 50% -5%,  rgba(84,26,163,.75) 0%, transparent 65%),
-        radial-gradient(ellipse 55% 45% at 85% 90%,  rgba(255,72,138,.22) 0%, transparent 60%),
-        radial-gradient(ellipse 45% 40% at 10% 75%,  rgba(84,26,163,.25) 0%, transparent 60%);
+      background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(255,255,255,.06) 0%, transparent 70%);
       pointer-events: none;
     }
-
-    /* floating orbs */
-    .orb {
-      position: absolute; border-radius: 50%; filter: blur(90px); pointer-events: none;
-      animation: drift 10s ease-in-out infinite alternate;
+    .hero::after {
+      content: '';
+      position: absolute; bottom: -1px; left: 0; right: 0; height: 64px;
+      background: var(--bg);
+      clip-path: ellipse(58% 100% at 50% 100%);
     }
-    .orb-1 { width: 340px; height: 340px; background: rgba(84,26,163,.35); top: 10%; left: -8%; animation-delay: 0s; }
-    .orb-2 { width: 260px; height: 260px; background: rgba(255,72,138,.2);  top: 55%; right: -6%; animation-delay: -4s; }
-    .orb-3 { width: 200px; height: 200px; background: rgba(84,26,163,.2);   bottom: 5%; left: 40%; animation-delay: -7s; }
-    @keyframes drift { from { transform: translate(0,0); } to { transform: translate(20px, 30px); } }
 
-    .hero-pill {
-      position: relative;
+    .hero-badge {
       display: inline-flex; align-items: center; gap: .5rem;
-      background: var(--glass); border: 1px solid var(--glass-border);
-      border-radius: 50px; padding: .45rem 1.1rem;
-      font-size: .72rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
-      color: var(--pink-light); margin-bottom: 2rem;
+      background: rgba(255,255,255,.13); border: 1px solid rgba(255,255,255,.2);
+      border-radius: 50px; padding: .4rem 1rem;
+      font-size: .72rem; font-weight: 700; letter-spacing: 1.2px;
+      text-transform: uppercase; color: rgba(255,255,255,.9);
+      margin-bottom: 1.75rem;
     }
-    .pulse-dot {
-      width: 7px; height: 7px; border-radius: 50%; background: var(--pink);
-      animation: pulse 2s infinite;
+    .live-dot {
+      width: 7px; height: 7px; border-radius: 50%; background: #4ade80;
+      animation: blink 2s infinite;
     }
-    @keyframes pulse {
-      0%,100% { opacity:1; transform:scale(1); }
-      50%      { opacity:.4; transform:scale(1.5); }
-    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
 
-    .hero-wordmark {
-      position: relative;
-      font-size: clamp(5.5rem, 18vw, 11rem); font-weight: 900; letter-spacing: 6px; line-height: 1;
-      background: linear-gradient(140deg, #fff 20%, rgba(255,255,255,.8) 55%, var(--pink-light) 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-      margin-bottom: 1.5rem;
+    .hero h1 {
+      font-size: clamp(2.4rem, 7vw, 4.4rem); font-weight: 900; color: #fff;
+      line-height: 1.08; margin-bottom: 1.25rem; letter-spacing: -1.5px;
     }
-
-    .hero-tagline {
-      position: relative;
-      font-size: clamp(1.15rem, 3vw, 1.65rem); font-weight: 700;
-      color: rgba(255,255,255,.9); margin-bottom: .9rem;
-    }
+    .hero h1 em { font-style: normal; opacity: .82; }
 
     .hero-sub {
-      position: relative;
-      font-size: clamp(.9rem, 2vw, 1.05rem); font-weight: 400;
-      color: var(--muted); max-width: 500px; line-height: 1.75; margin-bottom: 3rem;
+      font-size: clamp(.95rem, 2.5vw, 1.1rem); color: rgba(255,255,255,.72);
+      max-width: 500px; margin: 0 auto 2.5rem; line-height: 1.75; font-weight: 400;
     }
 
-    .btn-group { position: relative; display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    /* store buttons */
+    .btn-row { display: flex; gap: .85rem; flex-wrap: wrap; justify-content: center; }
 
-    .store-btn {
-      display: flex; align-items: center; gap: .8rem;
-      padding: .9rem 1.75rem; border-radius: 14px; text-decoration: none;
-      transition: transform .2s, box-shadow .2s;
+    .dl-btn {
+      display: inline-flex; align-items: center; gap: .75rem;
+      padding: .85rem 1.6rem; border-radius: 14px; text-decoration: none;
+      transition: transform .2s, box-shadow .2s; cursor: pointer;
     }
-    .store-btn:hover { transform: translateY(-3px); box-shadow: 0 14px 36px rgba(84,26,163,.45); }
-    .store-btn-light { background: #fff; color: var(--dark); }
-    .store-btn-dark  { background: var(--glass); border: 1px solid var(--glass-border); color: #fff; }
+    .dl-btn:hover { transform: translateY(-3px); box-shadow: 0 14px 36px rgba(0,0,0,.25); }
+    .dl-btn-light { background: #fff; color: var(--text); }
+    .dl-btn-dark  { background: rgba(255,255,255,.12); border: 1.5px solid rgba(255,255,255,.3); color: #fff; }
+    .dl-icon { width: 26px; height: 26px; flex-shrink: 0; }
+    .dl-sm { font-size: .6rem; font-weight: 600; opacity: .6; letter-spacing: .4px; text-transform: uppercase; display: block; }
+    .dl-lg { font-size: .95rem; font-weight: 800; display: block; }
 
-    .store-icon { font-size: 1.8rem; line-height: 1; }
-    .store-label-sm { font-size: .62rem; font-weight: 600; opacity: .65; letter-spacing: .5px; text-transform: uppercase; }
-    .store-label-lg { font-size: .95rem; font-weight: 800; }
-
-    .hero-scroll {
-      position: absolute; bottom: 2.2rem; left: 50%; transform: translateX(-50%);
-      display: flex; flex-direction: column; align-items: center; gap: .4rem;
-      color: var(--muted); font-size: .7rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
-    }
-    .scroll-line {
-      width: 1px; height: 36px;
-      background: linear-gradient(to bottom, var(--muted), transparent);
-      animation: grow 1.6s ease-in-out infinite;
-    }
-    @keyframes grow {
-      0%   { transform: scaleY(0); transform-origin: top; }
-      50%  { transform: scaleY(1); transform-origin: top; }
-      51%  { transform: scaleY(1); transform-origin: bottom; }
-      100% { transform: scaleY(0); transform-origin: bottom; }
-    }
-
-    /* ── SHARED SECTION STYLES ─────────────────────────── */
-    section { padding: 6rem 2rem; }
+    /* ── SHARED SECTION ──────────────────────────────── */
+    .section { padding: 5rem 2rem; }
+    .section-white { background: var(--white); }
     .container { max-width: 1080px; margin: 0 auto; }
-    .section-label {
+    .label {
       display: inline-block; font-size: .72rem; font-weight: 700;
-      letter-spacing: 2px; text-transform: uppercase; color: var(--pink); margin-bottom: 1rem;
+      letter-spacing: 2px; text-transform: uppercase; color: var(--purple);
+      margin-bottom: .7rem;
     }
-    .section-title {
-      font-size: clamp(1.65rem, 4vw, 2.6rem); font-weight: 800; line-height: 1.2; margin-bottom: 1rem;
+    .sec-title {
+      font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 800;
+      line-height: 1.2; color: var(--text); margin-bottom: .9rem;
+      letter-spacing: -.5px;
     }
-    .section-sub {
-      font-size: 1rem; color: var(--muted); line-height: 1.75; max-width: 530px;
-    }
-
-    /* ── FEATURES ──────────────────────────────────────── */
-    .features-bg { background: var(--dark-2); }
-
-    .features-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 1.5rem; margin-top: 3.5rem;
+    .sec-sub {
+      font-size: .97rem; color: var(--text-muted); line-height: 1.75; max-width: 520px;
     }
 
-    .f-card {
-      background: var(--glass); border: 1px solid var(--glass-border);
-      border-radius: 20px; padding: 2rem;
-      transition: transform .3s, border-color .3s;
+    /* ── DUAL SPLIT ──────────────────────────────────── */
+    .dual-split {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;
+      margin-top: 3rem;
     }
-    .f-card:hover { transform: translateY(-5px); border-color: rgba(84,26,163,.5); }
+    @media (max-width: 700px) { .dual-split { grid-template-columns: 1fr; } }
 
-    .f-icon {
-      width: 50px; height: 50px; border-radius: 13px;
-      display: flex; align-items: center; justify-content: center; font-size: 1.4rem;
-      margin-bottom: 1.25rem;
+    .split-card {
+      border-radius: 22px; padding: 2.25rem;
+      border: 1.5px solid transparent;
     }
-    .ic-p { background: rgba(84,26,163,.3); }
-    .ic-k { background: rgba(255,72,138,.2); }
-    .ic-b { background: rgba(40,120,255,.2); }
-    .ic-g { background: rgba(255,190,0,.18); }
+    .split-host   { background: var(--purple-faint); border-color: rgba(84,26,163,.18); }
+    .split-artist { background: #fff7ed; border-color: rgba(249,115,22,.2); }
 
-    .f-title { font-size: 1.05rem; font-weight: 700; margin-bottom: .55rem; }
-    .f-desc  { font-size: .88rem; color: var(--muted); line-height: 1.65; }
-
-    /* ── HOW IT WORKS ──────────────────────────────────── */
-    .steps-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem; margin-top: 3.5rem;
+    .split-tag {
+      display: inline-block; border-radius: 50px;
+      font-size: .68rem; font-weight: 800; letter-spacing: 1px;
+      text-transform: uppercase; padding: .3rem .85rem; margin-bottom: 1rem;
     }
+    .tag-host   { background: var(--purple); color: #fff; }
+    .tag-artist { background: #f97316; color: #fff; }
 
-    .step { text-align: center; padding: 2rem 1.5rem; }
+    .split-title { font-size: 1.3rem; font-weight: 800; color: var(--text); margin-bottom: .65rem; }
+    .split-desc  { font-size: .9rem; color: var(--text-mid); line-height: 1.7; margin-bottom: 1.4rem; }
 
-    .step-num {
-      width: 58px; height: 58px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--purple), var(--pink));
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.3rem; font-weight: 900; margin: 0 auto 1.5rem;
+    .split-list { list-style: none; display: flex; flex-direction: column; gap: .55rem; }
+    .split-list li {
+      display: flex; align-items: flex-start; gap: .65rem;
+      font-size: .875rem; font-weight: 600; color: var(--text);
     }
-    .step-title { font-size: 1.05rem; font-weight: 700; margin-bottom: .65rem; }
-    .step-desc  { font-size: .88rem; color: var(--muted); line-height: 1.65; }
-
-    .steps-connector {
-      display: flex; align-items: center; justify-content: center; gap: 0;
-      margin-top: 1rem;
-    }
-
-    /* ── FOR EVERYONE ──────────────────────────────────── */
-    .everyone-bg { background: var(--dark-2); }
-
-    .everyone-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 2rem; margin-top: 3.5rem;
-    }
-    @media (max-width: 680px) { .everyone-grid { grid-template-columns: 1fr; } }
-
-    .ev-card {
-      border-radius: 24px; padding: 2.5rem; position: relative; overflow: hidden;
-    }
-    .ev-host   { background: linear-gradient(135deg, rgba(84,26,163,.45) 0%, rgba(84,26,163,.08) 100%); border: 1px solid rgba(84,26,163,.4); }
-    .ev-artist { background: linear-gradient(135deg, rgba(255,72,138,.3) 0%, rgba(255,72,138,.04) 100%); border: 1px solid rgba(255,72,138,.3); }
-
-    .ev-emoji  { font-size: 2.4rem; margin-bottom: .9rem; }
-    .ev-title  { font-size: 1.35rem; font-weight: 800; margin-bottom: .7rem; }
-    .ev-desc   { font-size: .92rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem; }
-
-    .ev-list   { list-style: none; display: flex; flex-direction: column; gap: .55rem; }
-    .ev-list li {
-      display: flex; align-items: center; gap: .65rem;
-      font-size: .88rem; font-weight: 600; color: rgba(255,255,255,.85);
-    }
-    .ev-check {
+    .check-dot {
       width: 20px; height: 20px; border-radius: 50%;
-      background: rgba(255,255,255,.12); display: flex; align-items: center;
-      justify-content: center; font-size: .62rem; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .6rem; font-weight: 900; flex-shrink: 0; margin-top: 1px; color: #fff;
+    }
+    .cd-purple { background: var(--purple); }
+    .cd-orange { background: #f97316; }
+
+    /* ── CATEGORIES ──────────────────────────────────── */
+    /* Images are 1024×1536 (2:3 portrait) — cards match */
+    .cat-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1rem; margin-top: 3rem;
+    }
+    @media (max-width: 680px) { .cat-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 400px) { .cat-grid { grid-template-columns: 1fr; } }
+
+    /* When 7th card is alone in a 3-col row, center it */
+    .cat-grid > .cat-card:last-child:nth-child(3n + 1) {
+      grid-column: 2;
+    }
+    @media (max-width: 680px) {
+      /* In 2-col layout 7th card alone → center */
+      .cat-grid > .cat-card:last-child:nth-child(2n + 1) {
+        grid-column: 1 / -1;
+        max-width: calc(50% - .5rem);
+        margin: 0 auto;
+      }
     }
 
-    /* ── CTA BANNER ────────────────────────────────────── */
-    .cta-wrap { padding: 5rem 2rem; }
+    .cat-card {
+      border-radius: 18px; overflow: hidden; position: relative;
+      aspect-ratio: 2 / 3;   /* matches 1024×1536 portrait images exactly */
+      cursor: pointer;
+      transition: transform .3s, box-shadow .3s;
+    }
+    .cat-card:hover { transform: scale(1.025); box-shadow: 0 14px 36px rgba(0,0,0,.2); }
+
+    .cat-card img {
+      width: 100%; height: 100%; object-fit: cover;
+      display: block; transition: transform .4s;
+    }
+    .cat-card:hover img { transform: scale(1.05); }
+
+    .cat-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.65) 0%, rgba(0,0,0,.05) 50%, transparent 100%);
+    }
+    .cat-name {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 2.5rem 1rem 1rem;
+      color: #fff; font-size: 1rem; font-weight: 700; line-height: 1.2;
+    }
+
+    /* ── GIG TYPES — compact row, no heading ─────────── */
+    .gig-row {
+      display: flex; gap: 1rem; margin-top: 3rem;
+      align-items: stretch;
+    }
+    @media (max-width: 640px) {
+      .gig-row { overflow-x: auto; padding-bottom: .5rem; scroll-snap-type: x mandatory; }
+    }
+
+    .gig-card {
+      flex: 1 1 0; min-width: 140px; max-width: 260px;
+      border-radius: 16px; overflow: hidden; position: relative;
+      aspect-ratio: 3 / 4;
+      transition: transform .3s, box-shadow .3s;
+      scroll-snap-align: start;
+    }
+    .gig-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,.16); }
+    .gig-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .gig-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(84,26,163,.72) 0%, transparent 55%);
+    }
+    .gig-label {
+      position: absolute; bottom: .8rem; left: .9rem; right: .9rem;
+      color: #fff; font-size: .875rem; font-weight: 700;
+    }
+
+    .gig-more {
+      flex: 0 0 auto; align-self: stretch;
+      display: flex; align-items: center; justify-content: center;
+      padding: 1rem 1.25rem; border-radius: 16px; min-width: 100px;
+      background: var(--purple-soft); color: var(--purple);
+      font-size: .875rem; font-weight: 700; text-align: center; line-height: 1.4;
+      border: 1.5px dashed rgba(84,26,163,.3);
+    }
+
+    /* ── PROFESSIONAL TYPES ──────────────────────────── */
+    .types-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(148px,1fr));
+      gap: .75rem; margin-top: 2.5rem;
+    }
+    .type-pill {
+      background: var(--white); border: 1.5px solid var(--border);
+      border-radius: 12px; padding: .7rem 1rem;
+      display: flex; align-items: center; gap: .6rem;
+      font-size: .875rem; font-weight: 600; color: var(--text);
+      cursor: pointer; transition: border-color .2s, box-shadow .2s, transform .2s;
+    }
+    .type-pill:hover {
+      border-color: var(--purple); color: var(--purple);
+      box-shadow: 0 4px 14px rgba(84,26,163,.12); transform: translateY(-2px);
+    }
+    .type-pill.more-pill {
+      background: var(--purple-soft); border-color: rgba(84,26,163,.25);
+      color: var(--purple); border-style: dashed; justify-content: center;
+    }
+    .type-dot {
+      width: 30px; height: 30px; border-radius: 8px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .95rem;
+    }
+
+    /* ── HOW IT WORKS ────────────────────────────────── */
+    .hiw-tabs {
+      display: flex; gap: .5rem; margin: 2.5rem 0 2rem;
+    }
+    .hiw-tab {
+      padding: .55rem 1.25rem; border-radius: 50px; font-size: .875rem; font-weight: 700;
+      cursor: pointer; transition: all .2s; border: 1.5px solid var(--border);
+      background: var(--white); color: var(--text-muted);
+    }
+    .hiw-tab.active { background: var(--purple); color: #fff; border-color: var(--purple); }
+
+    .hiw-flow { display: none; }
+    .hiw-flow.active { display: grid; }
+
+    .steps-grid {
+      grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 1.25rem;
+    }
+    .step {
+      background: var(--white); border: 1.5px solid var(--border);
+      border-radius: 18px; padding: 1.75rem;
+    }
+    .step-num {
+      width: 44px; height: 44px; border-radius: 50%; background: var(--purple);
+      color: #fff; display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; font-weight: 900; margin-bottom: 1.1rem;
+    }
+    .step-num-orange { background: #f97316; }
+    .step-title { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: .5rem; }
+    .step-desc  { font-size: .875rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* ── FEATURES ────────────────────────────────────── */
+    .feat-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(230px,1fr));
+      gap: 1.25rem; margin-top: 3rem;
+    }
+    .f-card {
+      background: var(--white); border: 1.5px solid var(--border);
+      border-radius: 20px; padding: 1.75rem;
+      transition: box-shadow .3s, border-color .3s, transform .3s;
+    }
+    .f-card:hover {
+      box-shadow: 0 8px 28px rgba(84,26,163,.1);
+      border-color: rgba(84,26,163,.25); transform: translateY(-4px);
+    }
+    .f-icon {
+      width: 48px; height: 48px; border-radius: 12px; background: var(--purple-soft);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; margin-bottom: 1.1rem;
+    }
+    .f-title { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: .45rem; }
+    .f-desc  { font-size: .875rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* ── CTA (download anchor) ───────────────────────── */
+    .cta-section { padding: 5rem 2rem; }
     .cta-box {
       max-width: 1080px; margin: 0 auto;
-      background: linear-gradient(135deg, var(--purple-dark) 0%, var(--purple) 55%, rgba(255,72,138,.25) 100%);
-      border-radius: 32px; padding: 5rem 3rem; text-align: center;
-      border: 1px solid rgba(255,255,255,.1); position: relative; overflow: hidden;
+      background: var(--purple);
+      border-radius: 28px; padding: 5rem 3rem; text-align: center;
+      position: relative; overflow: hidden;
     }
     .cta-box::before {
       content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(255,72,138,.12) 0%, transparent 70%);
+      background: radial-gradient(ellipse 50% 60% at 80% 20%, rgba(255,255,255,.07) 0%, transparent 65%);
       pointer-events: none;
     }
-    .cta-title { font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; margin-bottom: 1rem; position: relative; }
-    .cta-sub   { font-size: 1.05rem; color: rgba(255,255,255,.65); margin-bottom: 2.5rem; position: relative; }
+    .cta-title { font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 900; color: #fff; margin-bottom: .85rem; }
+    .cta-sub   { font-size: 1.05rem; color: rgba(255,255,255,.7); margin-bottom: 2.25rem; }
+    @media (max-width: 480px) { .cta-box { padding: 3.5rem 1.5rem; } }
 
-    /* ── FOOTER ────────────────────────────────────────── */
-    footer {
-      padding: 2.5rem 2rem; text-align: center;
-      border-top: 1px solid var(--glass-border);
+    /* ── FOOTER ──────────────────────────────────────── */
+    footer { background: var(--purple-deeper); padding: 2.25rem 2.5rem; }
+    .footer-inner {
+      max-width: 1080px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1.25rem;
     }
-    .footer-logo {
-      font-size: 1.45rem; font-weight: 900; letter-spacing: 3px;
-      background: linear-gradient(130deg, #fff 30%, var(--pink-light) 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-      margin-bottom: .4rem;
+    .footer-logo { font-size: 1.35rem; font-weight: 900; color: #fff; }
+    .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .footer-links a {
+      color: rgba(255,255,255,.55); font-size: .82rem; font-weight: 500;
+      text-decoration: none; transition: color .2s;
     }
-    .footer-copy { font-size: .78rem; color: var(--muted); }
-
-    /* ── RESPONSIVE TWEAKS ─────────────────────────────── */
-    @media (max-width: 480px) {
-      nav { padding: 1rem 1.25rem; }
-      .cta-box { padding: 3rem 1.5rem; }
-    }
+    .footer-links a:hover { color: #fff; }
+    .footer-copy { font-size: .76rem; color: rgba(255,255,255,.3); width: 100%; }
+    @media (max-width: 600px) { .footer-inner { flex-direction: column; align-items: flex-start; } }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- NAV — "Get the App" anchors to bottom CTA -->
 <nav>
   <div class="nav-logo">zumpa</div>
-  <a href="#download" class="nav-btn">Get the App</a>
+  <div class="nav-links">
+    <a href="#categories">Categories</a>
+    <a href="#how-it-works">How It Works</a>
+    <a href="#features">Features</a>
+  </div>
+  <a href="#download" class="nav-cta">Get the App</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
-  <div class="orb orb-3"></div>
-
-  <div class="hero-pill">
-    <span class="pulse-dot"></span>
-    Now Available
+  <div class="hero-badge">
+    <span class="live-dot"></span>
+    Now Available — India
   </div>
-
-  <h1 class="hero-wordmark">zumpa</h1>
-  <p class="hero-tagline">Where the Stage Meets the Crowd</p>
+  <h1>Discover Gigs &<br><em>Talented Pros</em></h1>
   <p class="hero-sub">
-    Reimagining the entertainment event industry. Hire artists, book event managers,
-    and host your gigs — letting top professionals come directly to you.
+    Whether you're hosting an event or looking for your next gig — Zumpa connects
+    artists, performers, and event professionals with the people who need them.
   </p>
-
-  <div class="btn-group" id="download">
-    <a href="#" class="store-btn store-btn-light">
-      <span class="store-icon">🍎</span>
-      <div>
-        <div class="store-label-sm">Download on the</div>
-        <div class="store-label-lg">App Store</div>
-      </div>
+  <div class="btn-row">
+    <a href="#" class="dl-btn dl-btn-light">
+      <svg class="dl-icon" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+      </svg>
+      <div><span class="dl-sm">Download on the</span><span class="dl-lg">App Store</span></div>
     </a>
-    <a href="#" class="store-btn store-btn-dark">
-      <span class="store-icon">▶</span>
-      <div>
-        <div class="store-label-sm">Get it on</div>
-        <div class="store-label-lg">Google Play</div>
-      </div>
+    <a href="#" class="dl-btn dl-btn-dark">
+      <svg class="dl-icon" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M3.18 23.76A2 2 0 0 1 2 22V2c0-.75.42-1.42 1.08-1.76l11.03 11.76L3.18 23.76zm15.42-8.65-2.36-2.52-9.81 5.58 12.17-3.06zm-12.17-9.44 9.81 5.58 2.36-2.52L6.43 5.67zm14.57 7.83-2.19-2.5-2.43-1.37-9.61-5.46-1.19 1.27 11.03 11.76 1.19 1.27 4.2-2.37z"/>
+      </svg>
+      <div><span class="dl-sm">Get it on</span><span class="dl-lg">Google Play</span></div>
     </a>
-  </div>
-
-  <div class="hero-scroll">
-    <span>Scroll</span>
-    <div class="scroll-line"></div>
   </div>
 </section>
 
-<!-- FEATURES -->
-<section class="features-bg">
+<!-- FOR HOSTS & ARTISTS -->
+<section class="section section-white">
   <div class="container">
-    <span class="section-label">What We Offer</span>
-    <h2 class="section-title">Everything you need<br>to run the perfect event</h2>
-    <p class="section-sub">From booking talent to managing production, Zumpa puts the entire entertainment industry in your pocket.</p>
+    <span class="label">Built For Both Sides</span>
+    <h2 class="sec-title">On stage or behind it,<br>Zumpa works for you</h2>
 
-    <div class="features-grid">
-      <div class="f-card">
-        <div class="f-icon ic-p">🎤</div>
-        <h3 class="f-title">Hire Top Artists</h3>
-        <p class="f-desc">Browse a curated pool of musicians, performers, DJs, comedians and more. Find the perfect act for any occasion.</p>
+    <div class="dual-split">
+      <div class="split-card split-host">
+        <span class="split-tag tag-host">For Hosts &amp; Event Organizers</span>
+        <h3 class="split-title">Plan your event, your way</h3>
+        <p class="split-desc">Post a gig, receive applications from verified professionals, or personally invite artists you want. Manage bookings and coordination — all in one place.</p>
+        <ul class="split-list">
+          <li><span class="check-dot cd-purple">✓</span> Post gigs with date, budget &amp; requirements</li>
+          <li><span class="check-dot cd-purple">✓</span> Receive direct applications from professionals</li>
+          <li><span class="check-dot cd-purple">✓</span> Personally invite specific artists</li>
+          <li><span class="check-dot cd-purple">✓</span> Manage bookings &amp; confirmations in-app</li>
+        </ul>
       </div>
-      <div class="f-card">
-        <div class="f-icon ic-k">📋</div>
-        <h3 class="f-title">Expert Event Managers</h3>
-        <p class="f-desc">Connect with seasoned event professionals who handle logistics, production, and execution so you don't have to.</p>
+      <div class="split-card split-artist">
+        <span class="split-tag tag-artist">For Artists &amp; Professionals</span>
+        <h3 class="split-title">Get discovered, get booked</h3>
+        <p class="split-desc">Build your profile, showcase your portfolio, and apply to open gigs near you. Get personally invited by hosts — no agents, no middlemen needed.</p>
+        <ul class="split-list">
+          <li><span class="check-dot cd-orange">✓</span> Build a portfolio &amp; professional profile</li>
+          <li><span class="check-dot cd-orange">✓</span> Browse &amp; apply to open gigs near you</li>
+          <li><span class="check-dot cd-orange">✓</span> Receive personal invites from hosts</li>
+          <li><span class="check-dot cd-orange">✓</span> Toggle Professional Mode to appear in listings</li>
+        </ul>
       </div>
-      <div class="f-card">
-        <div class="f-icon ic-b">🎪</div>
-        <h3 class="f-title">Host Your Gig</h3>
-        <p class="f-desc">Post your event and watch qualified professionals apply directly. No middlemen, no overhead — just the right match.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="section" id="categories">
+  <div class="container">
+    <span class="label">Explore by Category</span>
+    <h2 class="sec-title">Every kind of talent,<br>right at your fingertips</h2>
+
+    <div class="cat-grid">
+      <div class="cat-card">
+        <img src="https://pub-312e4c61a82f4aaf9f142db2376bab9b.r2.dev/categories/Music.webp" alt="Music" loading="lazy" />
+        <div class="cat-overlay"></div>
+        <div class="cat-name">Music</div>
       </div>
-      <div class="f-card">
-        <div class="f-icon ic-g">✉️</div>
-        <h3 class="f-title">Invite Talent</h3>
-        <p class="f-desc">Spotted someone perfect? Send a personal invite to your gig and secure your dream lineup before anyone else does.</p>
+      <div class="cat-card">
+        <img src="https://pub-312e4c61a82f4aaf9f142db2376bab9b.r2.dev/categories/danceandstageActs.webp" alt="Dance & Stage Acts" loading="lazy" />
+        <div class="cat-overlay"></div>
+        <div class="cat-name">Dance &amp; Stage Acts</div>
       </div>
+      <div class="cat-card">
+        <img src="https://pub-312e4c61a82f4aaf9f142db2376bab9b.r2.dev/categories/hostandanchor.webp" alt="Hosting & Comedy" loading="lazy" />
+        <div class="cat-overlay"></div>
+        <div class="cat-name">Hosting &amp; Comedy</div>
+      </div>
+      <div class="cat-card">
+        <img src="https://pub-312e4c61a82f4aaf9f142db2376bab9b.r2.dev/categories/photoandvideography.webp" alt="Photography & Videography" loading="lazy" />
+        <div class="cat-overlay"></div>
+        <div class="cat-name">Photography &amp; Videography</div>
+      </div>
+      <div class="cat-card">
+        <img src="https://pub-312e4c61a82f4aaf9f142db2376bab9b.r2.dev/categories/vendorsCategory.webp" alt="Vendors" loading="lazy" />
+        <div class="cat-overlay"></div>
+        <div class="cat-name">Vendors</div>
+      </div>
+      <div class="cat-card">
+        <img src="https://pub-312e4c61a82f4aaf9f142db2376bab9b.r2.dev/categories/eventManagement.webp" alt="Event Managers" loading="lazy" />
+        <div class="cat-overlay"></div>
+        <div class="cat-name">Event Managers</div>
+      </div>
+      <!-- 7th card: CSS auto-centers it in the 3-col grid -->
+      <div class="cat-card">
+        <img src="https://pub-312e4c61a82f4aaf9f142db2376bab9b.r2.dev/categories/influencer.webp" alt="Influencers" loading="lazy" />
+        <div class="cat-overlay"></div>
+        <div class="cat-name">Influencers</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GIG TYPES — compact row, no heading needed -->
+<section class="section section-white">
+  <div class="container">
+    <div class="gig-row">
+      <div class="gig-card">
+        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=500&auto=format&fit=crop" alt="Wedding" loading="lazy" />
+        <div class="gig-overlay"></div>
+        <div class="gig-label">Wedding</div>
+      </div>
+      <div class="gig-card">
+        <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=500&auto=format&fit=crop" alt="Birthday Party" loading="lazy" />
+        <div class="gig-overlay"></div>
+        <div class="gig-label">Birthday Party</div>
+      </div>
+      <div class="gig-card">
+        <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=500&auto=format&fit=crop" alt="Concert" loading="lazy" />
+        <div class="gig-overlay"></div>
+        <div class="gig-label">Concert</div>
+      </div>
+      <div class="gig-card">
+        <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=500&auto=format&fit=crop" alt="Corporate Event" loading="lazy" />
+        <div class="gig-overlay"></div>
+        <div class="gig-label">Corporate Event</div>
+      </div>
+      <div class="gig-more">& many<br>more</div>
+    </div>
+  </div>
+</section>
+
+<!-- BROWSE PROFESSIONALS -->
+<section class="section">
+  <div class="container">
+    <span class="label">Browse Professionals</span>
+    <h2 class="sec-title">Find the right talent<br>for any event</h2>
+
+    <div class="types-grid">
+      <div class="type-pill"><div class="type-dot" style="background:#EDE8FA;">🎤</div>Singer</div>
+      <div class="type-pill"><div class="type-dot" style="background:#FEF3C7;">🎧</div>DJ</div>
+      <div class="type-pill"><div class="type-dot" style="background:#DBEAFE;">🎸</div>Live Band / Groups</div>
+      <div class="type-pill"><div class="type-dot" style="background:#FCE7F3;">💃</div>Dancer</div>
+      <div class="type-pill"><div class="type-dot" style="background:#DCFCE7;">🎭</div>Comedian</div>
+      <div class="type-pill"><div class="type-dot" style="background:#FFF7ED;">🎙️</div>Host / Anchor</div>
+      <div class="type-pill"><div class="type-dot" style="background:#EDE8FA;">🎹</div>Keyboardist</div>
+      <div class="type-pill"><div class="type-dot" style="background:#F0FDF4;">🎻</div>Violinist</div>
+      <div class="type-pill"><div class="type-dot" style="background:#FCE7F3;">📸</div>Photographer</div>
+      <div class="type-pill"><div class="type-dot" style="background:#EDE8FA;">🎥</div>Videographer</div>
+      <div class="type-pill"><div class="type-dot" style="background:#FFF7ED;">🗂️</div>Event Manager</div>
+      <div class="type-pill"><div class="type-dot" style="background:#FCE7F3;">💄</div>Makeup Artist</div>
+      <div class="type-pill type-pill more-pill">+ many more</div>
     </div>
   </div>
 </section>
 
 <!-- HOW IT WORKS -->
-<section>
+<section class="section section-white" id="how-it-works">
   <div class="container">
-    <span class="section-label">How It Works</span>
-    <h2 class="section-title">Three steps to an<br>unforgettable event</h2>
+    <span class="label">How It Works</span>
+    <h2 class="sec-title">Simple steps,<br>unforgettable results</h2>
 
-    <div class="steps-grid">
+    <div class="hiw-tabs">
+      <button class="hiw-tab active" onclick="switchTab('hosts', this)">For Hosts</button>
+      <button class="hiw-tab" onclick="switchTab('artists', this)">For Artists &amp; Pros</button>
+    </div>
+
+    <div id="flow-hosts" class="hiw-flow active steps-grid">
       <div class="step">
         <div class="step-num">1</div>
         <h3 class="step-title">Post Your Gig</h3>
-        <p class="step-desc">Describe your event — the vibe, the date, the budget. It takes less than five minutes to go live and start receiving interest.</p>
+        <p class="step-desc">Describe your event — the vibe, date, venue, and budget. Go live in under five minutes.</p>
       </div>
       <div class="step">
         <div class="step-num">2</div>
         <h3 class="step-title">Receive Applications</h3>
-        <p class="step-desc">Verified artists and event professionals apply directly to your gig. Review profiles, portfolios, and ratings at a glance.</p>
+        <p class="step-desc">Verified artists apply directly. Review profiles, portfolios, and ratings at a glance.</p>
       </div>
       <div class="step">
         <div class="step-num">3</div>
-        <h3 class="step-title">Book &amp; Celebrate</h3>
-        <p class="step-desc">Confirm your picks, coordinate through the app, and get ready to put on a show the crowd will never forget.</p>
+        <h3 class="step-title">Invite Who You Want</h3>
+        <p class="step-desc">Spotted the perfect artist? Send a personal invite they can accept with one tap.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3 class="step-title">Book &amp; Manage</h3>
+        <p class="step-desc">Confirm bookings and coordinate via in-app messaging — your entire lineup in one place.</p>
+      </div>
+    </div>
+
+    <div id="flow-artists" class="hiw-flow steps-grid">
+      <div class="step">
+        <div class="step-num step-num-orange">1</div>
+        <h3 class="step-title">Build Your Profile</h3>
+        <p class="step-desc">Add your skills, upload portfolio media, and set your starting price per gig.</p>
+      </div>
+      <div class="step">
+        <div class="step-num step-num-orange">2</div>
+        <h3 class="step-title">Turn On Pro Mode</h3>
+        <p class="step-desc">Enable Professional Mode to appear in discovery so hosts can find and invite you.</p>
+      </div>
+      <div class="step">
+        <div class="step-num step-num-orange">3</div>
+        <h3 class="step-title">Browse &amp; Apply</h3>
+        <p class="step-desc">Filter open gigs by category, city, and budget. Apply with one tap.</p>
+      </div>
+      <div class="step">
+        <div class="step-num step-num-orange">4</div>
+        <h3 class="step-title">Get Confirmed</h3>
+        <p class="step-desc">When a host accepts, you're booked. Track all your gigs and messages in-app.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOR EVERYONE -->
-<section class="everyone-bg">
+<!-- FEATURES -->
+<section class="section" id="features">
   <div class="container">
-    <span class="section-label">Built For Everyone</span>
-    <h2 class="section-title">Whether you're on stage<br>or behind the curtain</h2>
+    <span class="label">App Features</span>
+    <h2 class="sec-title">Everything in one place —<br>no middlemen required</h2>
 
-    <div class="everyone-grid">
-      <div class="ev-card ev-host">
-        <div class="ev-emoji">🎪</div>
-        <h3 class="ev-title">Event Hosts</h3>
-        <p class="ev-desc">Take control of your events. Find the right people, build your dream team, and deliver experiences no one will forget.</p>
-        <ul class="ev-list">
-          <li><span class="ev-check">✓</span> Post gigs in minutes</li>
-          <li><span class="ev-check">✓</span> Receive direct applications</li>
-          <li><span class="ev-check">✓</span> Personally invite professionals</li>
-          <li><span class="ev-check">✓</span> Manage everything in one place</li>
-        </ul>
+    <div class="feat-grid">
+      <div class="f-card">
+        <div class="f-icon">📋</div>
+        <h3 class="f-title">Gig Management</h3>
+        <p class="f-desc">Post, edit, and manage gigs with full visibility over applications, invites, and confirmed bookings.</p>
       </div>
-      <div class="ev-card ev-artist">
-        <div class="ev-emoji">🎸</div>
-        <h3 class="ev-title">Artists &amp; Professionals</h3>
-        <p class="ev-desc">Your next big gig is waiting. Discover events that match your talent and apply directly — no agents required.</p>
-        <ul class="ev-list">
-          <li><span class="ev-check">✓</span> Browse open gigs near you</li>
-          <li><span class="ev-check">✓</span> Apply with one tap</li>
-          <li><span class="ev-check">✓</span> Receive personal invites</li>
-          <li><span class="ev-check">✓</span> Build your professional profile</li>
-        </ul>
+      <div class="f-card">
+        <div class="f-icon">🌟</div>
+        <h3 class="f-title">Professional Mode</h3>
+        <p class="f-desc">Artists toggle visibility on demand. Appear in discovery listings only when you're available for bookings.</p>
+      </div>
+      <div class="f-card">
+        <div class="f-icon">🖼️</div>
+        <h3 class="f-title">Portfolio Showcase</h3>
+        <p class="f-desc">Upload performance videos and photos to your profile so hosts can see exactly what they're booking.</p>
+      </div>
+      <div class="f-card">
+        <div class="f-icon">⭐</div>
+        <h3 class="f-title">Dual Ratings</h3>
+        <p class="f-desc">Hosts and artists are rated separately — as a professional and as a host — building trust on both sides.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FINAL CTA -->
-<div class="cta-wrap">
+<!-- CTA — "Get the App" nav anchor points here -->
+<div class="cta-section" id="download">
   <div class="cta-box">
     <h2 class="cta-title">Ready to make some noise?</h2>
-    <p class="cta-sub">Join thousands of event hosts and artists already on Zumpa.</p>
-    <div class="btn-group">
-      <a href="#" class="store-btn store-btn-light">
-        <span class="store-icon">🍎</span>
-        <div>
-          <div class="store-label-sm">Download on the</div>
-          <div class="store-label-lg">App Store</div>
-        </div>
+    <p class="cta-sub">Join event hosts and artists already on Zumpa.</p>
+    <div class="btn-row">
+      <a href="#" class="dl-btn dl-btn-light">
+        <svg class="dl-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+        </svg>
+        <div><span class="dl-sm">Download on the</span><span class="dl-lg">App Store</span></div>
       </a>
-      <a href="#" class="store-btn store-btn-dark">
-        <span class="store-icon">▶</span>
-        <div>
-          <div class="store-label-sm">Get it on</div>
-          <div class="store-label-lg">Google Play</div>
-        </div>
+      <a href="#" class="dl-btn dl-btn-dark">
+        <svg class="dl-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M3.18 23.76A2 2 0 0 1 2 22V2c0-.75.42-1.42 1.08-1.76l11.03 11.76L3.18 23.76zm15.42-8.65-2.36-2.52-9.81 5.58 12.17-3.06zm-12.17-9.44 9.81 5.58 2.36-2.52L6.43 5.67zm14.57 7.83-2.19-2.5-2.43-1.37-9.61-5.46-1.19 1.27 11.03 11.76 1.19 1.27 4.2-2.37z"/>
+        </svg>
+        <div><span class="dl-sm">Get it on</span><span class="dl-lg">Google Play</span></div>
       </a>
     </div>
   </div>
@@ -456,9 +658,24 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">zumpa</div>
-  <p class="footer-copy">© 2026 Zumpa. All rights reserved.</p>
+  <div class="footer-inner">
+    <div class="footer-logo">zumpa</div>
+    <div class="footer-links">
+      <a href="/terms">Terms of Service</a>
+      <a href="/privacy">Privacy Policy</a>
+      <a href="mailto:support@zumpa.in">support@zumpa.in</a>
+    </div>
+    <p class="footer-copy">© 2026 Zumpa. All rights reserved. · Agra, Uttar Pradesh, India</p>
+  </div>
 </footer>
 
+<script>
+  function switchTab(flow, btn) {
+    document.querySelectorAll('.hiw-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.hiw-flow').forEach(f => f.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('flow-' + flow).classList.add('active');
+  }
+</script>
 </body>
 </html>
