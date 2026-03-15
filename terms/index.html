@@ -14,119 +14,113 @@
     :root {
       --purple:      #541AA3;
       --purple-deep: #260A52;
-      --purple-soft: #EDE8FA;
       --text-dark:   #111827;
       --text-mid:    #374151;
       --text-muted:  #6B7280;
-      --border:      #E5E7EB;
-      --bg-light:    #F9F8FE;
+      --border:      #D1D5DB;
+      --bg:          #F9F9F9;
     }
 
     html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; background: var(--bg-light); color: var(--text-dark); }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text-dark); font-size: .875rem; }
 
-    /* NAV */
     nav {
-      background: var(--purple); padding: 1rem 2.5rem;
+      background: var(--purple); padding: .85rem 2.5rem;
       display: flex; align-items: center; justify-content: space-between;
     }
-    .nav-logo { font-size: 1.45rem; font-weight: 900; color: #fff; text-decoration: none; }
+    .nav-logo { font-size: 1.3rem; font-weight: 900; color: #fff; text-decoration: none; }
     .nav-back {
-      color: rgba(255,255,255,0.8); font-size: .85rem; font-weight: 600;
-      text-decoration: none; display: flex; align-items: center; gap: .4rem;
-      transition: color .2s;
+      color: rgba(255,255,255,0.75); font-size: .8rem; font-weight: 500;
+      text-decoration: none; transition: color .2s;
     }
     .nav-back:hover { color: #fff; }
 
-    /* HERO */
     .page-hero {
-      background: var(--purple); padding: 3rem 2rem 4rem; text-align: center;
-      position: relative;
+      background: var(--purple); padding: 2rem 2.5rem 2.5rem;
+      border-bottom: 3px solid var(--purple-deep);
     }
-    .page-hero::after {
-      content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 50px;
-      background: var(--bg-light);
-      clip-path: ellipse(55% 100% at 50% 100%);
-    }
-    .page-hero h1 { font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 900; color: #fff; margin-bottom: .5rem; }
-    .page-hero .date { color: rgba(255,255,255,0.65); font-size: .875rem; font-weight: 500; }
+    .page-hero h1 { font-size: 1.5rem; font-weight: 800; color: #fff; margin-bottom: .3rem; letter-spacing: -.3px; }
+    .page-hero .meta { color: rgba(255,255,255,0.6); font-size: .78rem; }
 
-    /* CONTENT */
-    .content-wrap {
-      max-width: 780px; margin: 0 auto;
-      padding: 3.5rem 2rem 6rem;
+    .layout {
+      max-width: 900px; margin: 0 auto;
+      display: grid; grid-template-columns: 200px 1fr; gap: 0;
+      align-items: start;
     }
 
-    .toc-box {
-      background: #fff; border: 1.5px solid var(--border);
-      border-radius: 18px; padding: 1.75rem; margin-bottom: 3rem;
+    .toc-sidebar {
+      position: sticky; top: 0;
+      padding: 2rem 1.25rem 2rem 0;
+      border-right: 1px solid var(--border);
+      min-height: 100vh;
     }
-    .toc-title { font-size: .8rem; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 1.5px; color: var(--purple); margin-bottom: 1rem; }
-    .toc-list { list-style: none; display: flex; flex-direction: column; gap: .4rem; }
+    .toc-label {
+      font-size: .65rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1.5px; color: var(--text-muted); margin-bottom: .75rem;
+    }
+    .toc-list { list-style: none; }
+    .toc-list li { border-bottom: 1px solid #EEEEEE; }
     .toc-list a {
-      color: var(--text-mid); font-size: .875rem; font-weight: 500;
-      text-decoration: none; display: flex; align-items: center; gap: .5rem;
-      transition: color .2s;
+      display: block; padding: .4rem .25rem;
+      color: var(--text-muted); font-size: .75rem; font-weight: 500;
+      text-decoration: none; transition: color .15s; line-height: 1.4;
     }
     .toc-list a:hover { color: var(--purple); }
-    .toc-num { color: var(--purple); font-weight: 700; font-size: .8rem; }
+    .toc-num { font-weight: 700; color: var(--purple); margin-right: .3rem; }
 
-    .section-block { margin-bottom: 3rem; }
+    @media (max-width: 640px) {
+      .layout { grid-template-columns: 1fr; }
+      .toc-sidebar { display: none; }
+    }
+
+    .doc-body { padding: 2rem 0 4rem 2.5rem; }
+
+    .intro-para {
+      font-size: .875rem; color: var(--text-mid); line-height: 1.85;
+      padding-bottom: 1.25rem; margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .intro-para strong { color: var(--text-dark); }
+
+    .section-block { margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
+    .section-block:last-child { border-bottom: none; }
 
     .section-block h2 {
-      font-size: 1.2rem; font-weight: 800; color: var(--text-dark);
-      margin-bottom: 1rem; padding-bottom: .6rem;
-      border-bottom: 2px solid var(--purple-soft);
-      display: flex; align-items: center; gap: .6rem;
+      font-size: .8rem; font-weight: 700; color: var(--text-dark);
+      text-transform: uppercase; letter-spacing: 1px; margin-bottom: .85rem;
     }
-    .sec-num {
-      background: var(--purple); color: #fff; border-radius: 6px;
-      font-size: .72rem; font-weight: 800; padding: .2rem .5rem; flex-shrink: 0;
-    }
+    .section-block h2 .sec-num { color: var(--purple); margin-right: .5rem; }
 
     .section-block p {
-      font-size: .925rem; color: var(--text-mid); line-height: 1.8;
-      margin-bottom: .9rem;
+      font-size: .875rem; color: var(--text-mid); line-height: 1.85; margin-bottom: .75rem;
     }
-    .section-block ul, .section-block ol {
-      padding-left: 1.25rem; margin-bottom: .9rem;
-    }
+    .section-block ul, .section-block ol { padding-left: 1.5rem; margin-bottom: .75rem; }
     .section-block li {
-      font-size: .925rem; color: var(--text-mid); line-height: 1.8; margin-bottom: .35rem;
+      font-size: .875rem; color: var(--text-mid); line-height: 1.85; margin-bottom: .2rem;
     }
-    .section-block strong { color: var(--text-dark); font-weight: 700; }
+    .section-block strong { color: var(--text-dark); font-weight: 600; }
 
-    .highlight-box {
-      background: var(--purple-soft); border-left: 4px solid var(--purple);
-      border-radius: 0 12px 12px 0; padding: 1rem 1.25rem; margin: 1rem 0;
+    .caps-block {
+      font-size: .82rem; color: var(--text-mid); line-height: 1.8;
+      border: 1px solid var(--border); padding: .85rem 1rem;
+      background: #fff; margin: .75rem 0;
     }
-    .highlight-box p { margin-bottom: 0; }
 
-    .warning-box {
-      background: #fff7ed; border-left: 4px solid #f97316;
-      border-radius: 0 12px 12px 0; padding: 1rem 1.25rem; margin: 1rem 0;
+    .note {
+      border-left: 3px solid var(--border); padding: .6rem .9rem; margin: .85rem 0;
+      font-size: .83rem; color: var(--text-muted); line-height: 1.75;
     }
-    .warning-box p { margin-bottom: 0; color: #92400e; }
 
-    .contact-card {
-      background: #fff; border: 1.5px solid var(--border);
-      border-radius: 18px; padding: 1.75rem; margin-top: 1rem;
-    }
-    .contact-card p { margin-bottom: .4rem; }
-    .contact-card a { color: var(--purple); font-weight: 600; text-decoration: none; }
-
-    /* FOOTER */
     footer {
-      background: var(--purple-deep); padding: 2rem 2.5rem;
+      background: var(--purple-deep); padding: 1.5rem 2.5rem;
       display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 1rem;
+      flex-wrap: wrap; gap: .75rem; margin-top: 2rem;
     }
-    .footer-logo { font-size: 1.3rem; font-weight: 900; color: #fff; }
+    .footer-logo { font-size: 1.1rem; font-weight: 900; color: #fff; }
     .footer-links { display: flex; gap: 1.25rem; flex-wrap: wrap; }
-    .footer-links a { color: rgba(255,255,255,0.6); font-size: .82rem; text-decoration: none; transition: color .2s; }
+    .footer-links a { color: rgba(255,255,255,0.55); font-size: .78rem; text-decoration: none; transition: color .2s; }
     .footer-links a:hover { color: #fff; }
-    .footer-copy { font-size: .75rem; color: rgba(255,255,255,0.35); }
+    .footer-copy { font-size: .72rem; color: rgba(255,255,255,0.3); width: 100%; }
   </style>
 </head>
 <body>
@@ -138,180 +132,146 @@
 
 <div class="page-hero">
   <h1>Terms of Service</h1>
-  <p class="date">Effective Date: March 15, 2026</p>
+  <p class="meta">Effective Date: 15 March 2026 &nbsp;·&nbsp; Applies to: Zumpa Mobile Application &nbsp;·&nbsp; Jurisdiction: India</p>
 </div>
 
-<div class="content-wrap">
-
-  <!-- INTRO -->
-  <div class="section-block">
-    <p>Zumpa ("Zumpa," "we," "us," or "our") is a free platform that connects hosts with professionals for gigs and events. We are an intermediary as defined under Section 2(1)(w) of the Information Technology Act, 2000 ("IT Act"). By accessing or using our mobile application ("App"), you agree to these Terms of Service ("Terms"). If you do not agree, do not use the App.</p>
-  </div>
-
-  <!-- TOC -->
-  <div class="toc-box">
-    <div class="toc-title">Table of Contents</div>
+<div class="layout">
+  <aside class="toc-sidebar">
+    <div class="toc-label">Contents</div>
     <ul class="toc-list">
-      <li><a href="#s1"><span class="toc-num">01</span> Nature of the Platform</a></li>
-      <li><a href="#s2"><span class="toc-num">02</span> Intermediary Status</a></li>
-      <li><a href="#s3"><span class="toc-num">03</span> Eligibility</a></li>
-      <li><a href="#s4"><span class="toc-num">04</span> Account Registration</a></li>
-      <li><a href="#s5"><span class="toc-num">05</span> User Roles</a></li>
-      <li><a href="#s6"><span class="toc-num">06</span> Prohibited Activities</a></li>
-      <li><a href="#s7"><span class="toc-num">07</span> Content & Intellectual Property</a></li>
-      <li><a href="#s8"><span class="toc-num">08</span> Reporting & Grievance Redressal</a></li>
-      <li><a href="#s9"><span class="toc-num">09</span> Disclaimer of Warranties</a></li>
-      <li><a href="#s10"><span class="toc-num">10</span> Limitation of Liability</a></li>
-      <li><a href="#s11"><span class="toc-num">11</span> No Financial Transactions</a></li>
-      <li><a href="#s12"><span class="toc-num">12</span> Termination & Data Retention</a></li>
-      <li><a href="#s13"><span class="toc-num">13</span> Force Majeure</a></li>
-      <li><a href="#s14"><span class="toc-num">14</span> Governing Law & Dispute Resolution</a></li>
-      <li><a href="#s15"><span class="toc-num">15</span> Modifications</a></li>
-      <li><a href="#s16"><span class="toc-num">16</span> Contact</a></li>
+      <li><a href="#s1"><span class="toc-num">§1</span> Nature of the Platform</a></li>
+      <li><a href="#s2"><span class="toc-num">§2</span> Intermediary Status</a></li>
+      <li><a href="#s3"><span class="toc-num">§3</span> Eligibility</a></li>
+      <li><a href="#s4"><span class="toc-num">§4</span> Account Registration</a></li>
+      <li><a href="#s5"><span class="toc-num">§5</span> User Roles</a></li>
+      <li><a href="#s6"><span class="toc-num">§6</span> Prohibited Activities</a></li>
+      <li><a href="#s7"><span class="toc-num">§7</span> Content &amp; IP</a></li>
+      <li><a href="#s8"><span class="toc-num">§8</span> Grievance Redressal</a></li>
+      <li><a href="#s9"><span class="toc-num">§9</span> Disclaimer of Warranties</a></li>
+      <li><a href="#s10"><span class="toc-num">§10</span> Limitation of Liability</a></li>
+      <li><a href="#s11"><span class="toc-num">§11</span> No Financial Transactions</a></li>
+      <li><a href="#s12"><span class="toc-num">§12</span> Termination</a></li>
+      <li><a href="#s13"><span class="toc-num">§13</span> Force Majeure</a></li>
+      <li><a href="#s14"><span class="toc-num">§14</span> Governing Law</a></li>
+      <li><a href="#s15"><span class="toc-num">§15</span> Modifications</a></li>
+      <li><a href="#s16"><span class="toc-num">§16</span> Contact</a></li>
     </ul>
-  </div>
+  </aside>
 
-  <div class="section-block" id="s1">
-    <h2><span class="sec-num">01</span> Nature of the Platform</h2>
-    <p>Zumpa is a free, non-commercial intermediary platform. We do not:</p>
-    <ul>
-      <li>Charge any fees, commissions, or brokerage from any user.</li>
-      <li>Process, facilitate, hold, or guarantee any payments between users.</li>
-      <li>Participate in, mediate, supervise, or endorse any arrangement, agreement, booking, or transaction between users.</li>
-      <li>Verify the identity, qualifications, credentials, background, skills, or representations of any user.</li>
-      <li>Guarantee the quality, safety, legality, or outcome of any gig, event, or interaction.</li>
-    </ul>
-    <div class="highlight-box">
-      <p>All arrangements between users — including scope of work, compensation, timelines, quality expectations, and dispute resolution — are entirely between the parties involved. Zumpa has no knowledge of, involvement in, or liability for such arrangements.</p>
+  <main class="doc-body">
+
+    <div class="intro-para">
+      Zumpa ("Zumpa," "we," "us," or "our") is a free intermediary platform that facilitates discovery and communication between event hosts and performing or event professionals. Zumpa is an intermediary within the meaning of Section 2(1)(w) of the <strong>Information Technology Act, 2000 ("IT Act")</strong>. These Terms of Service ("Terms") constitute a legally binding agreement between you ("User," "you") and Zumpa governing your access to and use of the Zumpa mobile application ("Application"). By accessing or using the Application, you unconditionally accept and agree to be bound by these Terms. If you do not agree to any provision of these Terms, you must immediately cease use of the Application.
     </div>
-  </div>
 
-  <div class="section-block" id="s2">
-    <h2><span class="sec-num">02</span> Intermediary Status</h2>
-    <p>Zumpa operates solely as an intermediary under Section 79 of the IT Act and the Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021 ("IT Rules"). We provide a platform for users to discover and communicate with each other. We do not initiate, select, or modify any information or arrangement between users.</p>
-    <p>Our intermediary protections apply so long as we comply with applicable law, and we reserve the right to take action (including content removal or account suspension) to maintain compliance.</p>
-  </div>
-
-  <div class="section-block" id="s3">
-    <h2><span class="sec-num">03</span> Eligibility</h2>
-    <p>You must be at least 18 years old and legally competent to enter into a contract under the Indian Contract Act, 1872. If we discover underage use, we will terminate the account and delete associated data.</p>
-  </div>
-
-  <div class="section-block" id="s4">
-    <h2><span class="sec-num">04</span> Account Registration</h2>
-    <p>You must register using your phone number for OTP verification. Email is optional. You are solely responsible for:</p>
-    <ul>
-      <li>Providing accurate and current information.</li>
-      <li>Maintaining the confidentiality of your account.</li>
-      <li>All activities under your account.</li>
-      <li>Notifying us immediately of any unauthorised access.</li>
-    </ul>
-    <p>One person may maintain only one account. We may suspend or terminate duplicate or fraudulent accounts.</p>
-  </div>
-
-  <div class="section-block" id="s5">
-    <h2><span class="sec-num">05</span> User Roles</h2>
-    <p><strong>Hosts/Clients:</strong> May create gig listings, describe requirements, and communicate with professionals.</p>
-    <p><strong>Professionals:</strong> May create profiles, list skills and portfolios, and communicate with hosts.</p>
-    <p>Users communicate through in-app messaging and may choose to continue discussions offline. Whatever users agree upon — including work terms, payment, timelines — is a private arrangement between them. Zumpa is not a party to any such arrangement.</p>
-  </div>
-
-  <div class="section-block" id="s6">
-    <h2><span class="sec-num">06</span> User Conduct & Prohibited Activities</h2>
-    <p>You agree to comply with all applicable Indian laws, including the IT Act, the Digital Personal Data Protection Act, 2023 ("DPDP Act"), TRAI regulations, and the Consumer Protection Act, 2019. You must not:</p>
-    <ul>
-      <li>Use the platform for any illegal, fraudulent, or harmful activity.</li>
-      <li>Post content that is defamatory, obscene, hateful, harassing, threatening, or violates any third-party rights (including intellectual property and privacy).</li>
-      <li>Impersonate any person or entity, or create fake or misleading accounts or listings.</li>
-      <li>Send unsolicited commercial messages (spam) via messaging or notifications.</li>
-      <li>Upload malware, viruses, or any harmful code.</li>
-      <li>Attempt to reverse-engineer, scrape, or interfere with the App.</li>
-      <li>Use the platform to facilitate any activity that violates applicable labour, employment, or tax laws.</li>
-    </ul>
-    <p>We reserve the right to remove content and suspend or terminate accounts at our sole discretion for any violation.</p>
-  </div>
-
-  <div class="section-block" id="s7">
-    <h2><span class="sec-num">07</span> Content & Intellectual Property</h2>
-    <p>You retain ownership of content you upload (profiles, portfolios, gig descriptions). By posting, you grant Zumpa a non-exclusive, royalty-free, worldwide licence to use, display, reproduce, and distribute your content solely to operate and provide the App.</p>
-    <p>You represent that your content does not infringe any third-party rights. You are solely liable for any intellectual property claims arising from your content.</p>
-    <p>Zumpa owns all rights in the App, including software, design, logos, and trademarks. You may not copy, modify, or exploit any part without written permission.</p>
-  </div>
-
-  <div class="section-block" id="s8">
-    <h2><span class="sec-num">08</span> Reporting & Grievance Redressal</h2>
-    <p>Users may report content or conduct violations through the in-app reporting feature. In compliance with the IT Rules, we will:</p>
-    <ul>
-      <li>Acknowledge complaints within 24 hours.</li>
-      <li>Resolve complaints within 15 days (or as required by applicable rules).</li>
-      <li>Remove unlawful content within 36 hours of receiving a court order or government direction.</li>
-    </ul>
-    <div class="contact-card">
-      <p><strong>Grievance Officer</strong></p>
-      <p>Email: <a href="mailto:support@zumpa.in">support@zumpa.in</a></p>
-      <p>Address: Agra, Uttar Pradesh, India</p>
+    <div class="section-block" id="s1">
+      <h2><span class="sec-num">§1.</span> Nature of the Platform</h2>
+      <p><strong>1.1</strong> Zumpa is a free, non-commercial intermediary platform. Zumpa does not and shall not: (i) charge any fees, commissions, brokerage, or other consideration from any user in connection with any gig, booking, or transaction; (ii) process, facilitate, hold, transfer, or guarantee any payment or financial transaction between users; (iii) participate in, mediate, supervise, endorse, or be party to any arrangement, agreement, booking, engagement, or transaction between users; (iv) verify the identity, qualifications, credentials, professional background, skills, representations, or fitness of any user for any purpose; or (v) guarantee, warrant, or represent the quality, safety, legality, completeness, or suitability of any gig, event, user, or interaction facilitated through the platform.</p>
+      <p><strong>1.2</strong> All arrangements between users — including but not limited to scope of work, compensation, payment terms, timelines, quality expectations, and dispute resolution — are entirely private matters between the parties involved. Zumpa has no knowledge of, involvement in, control over, or liability for any such arrangements.</p>
     </div>
-  </div>
 
-  <div class="section-block" id="s9">
-    <h2><span class="sec-num">09</span> Disclaimer of Warranties</h2>
-    <div class="warning-box">
-      <p>THE APP IS PROVIDED "AS IS" AND "AS AVAILABLE." WE MAKE NO WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE ACCURACY, RELIABILITY, OR COMPLETENESS OF ANY USER-GENERATED CONTENT; THE SUITABILITY OR TRUSTWORTHINESS OF ANY USER; UNINTERRUPTED OR SECURE OPERATION; OR THE OUTCOME OF ANY INTERACTION BETWEEN USERS. YOU USE THE APP ENTIRELY AT YOUR OWN RISK.</p>
+    <div class="section-block" id="s2">
+      <h2><span class="sec-num">§2.</span> Intermediary Status</h2>
+      <p><strong>2.1</strong> Zumpa operates solely as an intermediary under Section 79 of the IT Act and the Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021 ("IT Rules, 2021"). Zumpa's role is limited to providing a platform for users to discover each other and exchange information. Zumpa does not initiate, select, modify, or exercise editorial control over any information, content, or arrangement transmitted between users.</p>
+      <p><strong>2.2</strong> Zumpa's safe harbour protections under Section 79 of the IT Act are conditional upon compliance with applicable law and these Terms. Zumpa reserves the right to take such action as it deems appropriate — including content removal, account suspension, or account termination — to maintain such compliance and to fulfil its due diligence obligations under the IT Rules, 2021.</p>
     </div>
-  </div>
 
-  <div class="section-block" id="s10">
-    <h2><span class="sec-num">10</span> Limitation of Liability & Indemnification</h2>
-    <div class="warning-box">
-      <p>TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, ZUMPA SHALL HAVE ZERO LIABILITY — DIRECT, INDIRECT, INCIDENTAL, CONSEQUENTIAL, OR PUNITIVE — ARISING FROM YOUR USE OF THE APP, ANY INTERACTION OR DISPUTE BETWEEN USERS, ANY USER-GENERATED CONTENT, OR ANY INTERRUPTION, ERROR, OR SECURITY BREACH. ZUMPA'S AGGREGATE LIABILITY, IF ANY, SHALL NOT EXCEED ₹0. THIS PLATFORM IS FREE TO USE AND YOU EXPRESSLY ACCEPT ALL ASSOCIATED RISKS.</p>
+    <div class="section-block" id="s3">
+      <h2><span class="sec-num">§3.</span> Eligibility</h2>
+      <p><strong>3.1</strong> You must be a natural person who has attained the age of eighteen (18) years and is legally competent to enter into a binding contract under the Indian Contract Act, 1872. Persons who are of unsound mind, insolvent, or otherwise disqualified from contracting under applicable law are not permitted to use the Application. By registering, you represent and warrant that you satisfy the foregoing eligibility requirements. Upon discovery of any breach of this clause, Zumpa shall forthwith terminate the account and delete all associated data.</p>
     </div>
-    <p><strong>Indemnification:</strong> You agree to indemnify and hold harmless Zumpa, its founders, directors, officers, employees, and agents from and against all claims, losses, damages, liabilities, costs, and expenses (including legal fees) arising from your use of the App, violation of these Terms, your interactions with other users, or your content.</p>
-  </div>
 
-  <div class="section-block" id="s11">
-    <h2><span class="sec-num">11</span> No Financial Transactions</h2>
-    <p>Zumpa does not process, hold, facilitate, or have any involvement in any financial transaction. There is no payment gateway, escrow, wallet, or billing feature on the platform. All financial arrangements between users are entirely private and outside the scope of this platform. You are solely responsible for compliance with all applicable tax laws (including GST and Income Tax) in relation to any income earned through arrangements made via the platform.</p>
-  </div>
-
-  <div class="section-block" id="s12">
-    <h2><span class="sec-num">12</span> Termination & Data Retention</h2>
-    <p>We may suspend or terminate your account at any time, with or without cause, including for violations of these Terms, without notice or liability.</p>
-    <p>Upon termination or account deletion:</p>
-    <ul>
-      <li>Your profile, listings, and associated content will be removed from the App.</li>
-      <li>Personal data will be deleted within 30 days, except where retention is required by law.</li>
-      <li>Server logs (IP addresses, timestamps) are retained for up to 90 days for security and legal compliance.</li>
-      <li>Data required under tax, legal, or regulatory obligations may be retained for up to 7 years as required under applicable Indian law.</li>
-      <li>Anonymised or aggregated data may be retained indefinitely.</li>
-    </ul>
-    <p>You may request account deletion at any time by contacting <a href="mailto:support@zumpa.in" style="color:var(--purple);font-weight:600;">support@zumpa.in</a>.</p>
-  </div>
-
-  <div class="section-block" id="s13">
-    <h2><span class="sec-num">13</span> Force Majeure</h2>
-    <p>Zumpa shall not be liable for any failure or delay in performance due to causes beyond our reasonable control, including natural disasters, war, terrorism, pandemics, government actions, internet or telecommunications failures, power outages, or third-party service outages.</p>
-  </div>
-
-  <div class="section-block" id="s14">
-    <h2><span class="sec-num">14</span> Governing Law & Dispute Resolution</h2>
-    <p>These Terms are governed by the laws of India. Any dispute arising from or related to these Terms or the App shall be resolved through binding arbitration in Agra, Uttar Pradesh, India, before a sole arbitrator appointed under the Arbitration and Conciliation Act, 1996. The language of arbitration shall be English.</p>
-    <p>Nothing in this clause prevents either party from seeking interim or injunctive relief from courts of competent jurisdiction in Agra, Uttar Pradesh.</p>
-  </div>
-
-  <div class="section-block" id="s15">
-    <h2><span class="sec-num">15</span> Modifications</h2>
-    <p>We may update these Terms at any time. Material changes will be notified through the App. Continued use after such notification constitutes acceptance. If you do not agree with updated Terms, you must stop using the App and delete your account.</p>
-  </div>
-
-  <div class="section-block" id="s16">
-    <h2><span class="sec-num">16</span> Contact</h2>
-    <div class="contact-card">
-      <p>For questions, complaints, or legal notices:</p>
-      <p>Email: <a href="mailto:support@zumpa.in">support@zumpa.in</a></p>
-      <p>Address: Agra, Uttar Pradesh, India</p>
+    <div class="section-block" id="s4">
+      <h2><span class="sec-num">§4.</span> Account Registration</h2>
+      <p><strong>4.1</strong> Registration requires a valid phone number for OTP-based verification. Provision of an email address is optional. You are solely and exclusively responsible for: (i) the accuracy and currency of all information provided during registration; (ii) maintaining the confidentiality and security of your account credentials; (iii) all activities conducted through your account, whether or not authorised by you; and (iv) immediately notifying Zumpa of any suspected or actual unauthorised access to your account.</p>
+      <p><strong>4.2</strong> Each natural person is permitted to maintain only one (1) account. Zumpa reserves the right to suspend or permanently terminate duplicate, fraudulent, or otherwise non-compliant accounts without notice or liability.</p>
     </div>
-  </div>
 
+    <div class="section-block" id="s5">
+      <h2><span class="sec-num">§5.</span> User Roles</h2>
+      <p><strong>5.1 Hosts and Clients:</strong> Users acting in the capacity of a host or client may create gig listings describing event requirements and communicate with professional users through the in-application messaging system.</p>
+      <p><strong>5.2 Professionals:</strong> Users acting in the capacity of a professional may create profiles, list skills and portfolio content, and communicate with hosts through the in-application messaging system.</p>
+      <p><strong>5.3</strong> Any agreement, arrangement, or understanding reached between users through or arising from use of the Application — including work scope, compensation, deliverables, timelines, and dispute resolution — constitutes a private bilateral arrangement to which Zumpa is not a party and in which Zumpa has no involvement, knowledge, or liability.</p>
+    </div>
+
+    <div class="section-block" id="s6">
+      <h2><span class="sec-num">§6.</span> User Conduct and Prohibited Activities</h2>
+      <p><strong>6.1</strong> You undertake to comply with all applicable Indian laws, including without limitation the IT Act, the DPDP Act, 2023, the Consumer Protection Act, 2019, TRAI regulations, and all applicable labour, employment, and tax laws. You shall not, and shall not attempt to: (i) use the Application for any illegal, fraudulent, harmful, threatening, harassing, defamatory, or obscene purpose; (ii) post, transmit, or distribute content that infringes any intellectual property rights, privacy rights, or other rights of any third party; (iii) impersonate any person or entity, or create accounts or listings that are fake, misleading, or intended to deceive; (iv) transmit unsolicited commercial communications, spam, or promotional content through the Application's messaging or notification systems; (v) upload, transmit, or distribute malware, viruses, trojans, ransomware, or any harmful or malicious code; (vi) reverse-engineer, decompile, disassemble, scrape, or otherwise attempt to derive source code from or interfere with the Application or its infrastructure; or (vii) use the Application to facilitate any activity that violates applicable labour, employment, licensing, or taxation laws.</p>
+      <p><strong>6.2</strong> Zumpa reserves the right, without prior notice and at its sole discretion, to remove any content and to suspend or permanently terminate any account found to be in violation of this clause or any other provision of these Terms.</p>
+    </div>
+
+    <div class="section-block" id="s7">
+      <h2><span class="sec-num">§7.</span> Content and Intellectual Property</h2>
+      <p><strong>7.1</strong> You retain ownership of all content you upload to the Application, including profiles, portfolio media, and gig descriptions. By uploading such content, you grant Zumpa a non-exclusive, royalty-free, worldwide, sublicensable licence to use, display, reproduce, and distribute such content solely to the extent necessary to operate and provide the Application.</p>
+      <p><strong>7.2</strong> You represent and warrant that your content does not infringe any intellectual property rights, privacy rights, or other rights of any third party. You shall be solely and exclusively liable for any claim, loss, or liability arising from any intellectual property or other rights infringement in connection with your content.</p>
+      <p><strong>7.3</strong> All rights, title, and interest in and to the Application, including without limitation its software, source code, design, interface, logos, trademarks, and service marks, are owned by or licensed to Zumpa. Nothing in these Terms grants you any right to copy, modify, adapt, reproduce, distribute, reverse-engineer, or otherwise exploit any part of the Application without Zumpa's prior written consent.</p>
+    </div>
+
+    <div class="section-block" id="s8">
+      <h2><span class="sec-num">§8.</span> Reporting and Grievance Redressal</h2>
+      <p><strong>8.1</strong> Users may report content or conduct they believe to be in violation of these Terms or applicable law through the in-application reporting mechanism. In compliance with the IT Rules, 2021, Zumpa shall: (i) acknowledge all complaints within twenty-four (24) hours of receipt; (ii) resolve complaints within fifteen (15) days (or within such shorter period as may be prescribed by applicable rules); and (iii) remove unlawful content within thirty-six (36) hours of receiving a valid court order or government direction.</p>
+      <div class="note">
+        <strong>Grievance Officer:</strong> Support Team, Zumpa<br>
+        <strong>Email:</strong> <a href="mailto:support@zumpa.in" style="color:var(--purple);">support@zumpa.in</a><br>
+        <strong>Address:</strong> Agra, Uttar Pradesh, India
+      </div>
+    </div>
+
+    <div class="section-block" id="s9">
+      <h2><span class="sec-num">§9.</span> Disclaimer of Warranties</h2>
+      <div class="caps-block">
+        THE APPLICATION IS PROVIDED STRICTLY ON AN "AS IS" AND "AS AVAILABLE" BASIS WITHOUT ANY WARRANTY OF ANY KIND, WHETHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE. ZUMPA EXPRESSLY DISCLAIMS ALL WARRANTIES, INCLUDING BUT NOT LIMITED TO: (I) ANY WARRANTY AS TO THE ACCURACY, RELIABILITY, COMPLETENESS, OR TIMELINESS OF ANY USER-GENERATED CONTENT, PROFILE, LISTING, OR INFORMATION AVAILABLE THROUGH THE APPLICATION; (II) ANY WARRANTY AS TO THE SUITABILITY, QUALIFICATIONS, CREDENTIALS, RELIABILITY, OR TRUSTWORTHINESS OF ANY USER; (III) ANY WARRANTY OF UNINTERRUPTED, ERROR-FREE, VIRUS-FREE, OR SECURE OPERATION OF THE APPLICATION; AND (IV) ANY WARRANTY AS TO THE OUTCOME, QUALITY, LEGALITY, OR SAFETY OF ANY INTERACTION, ARRANGEMENT, OR AGREEMENT BETWEEN USERS. YOUR USE OF THE APPLICATION AND YOUR INTERACTIONS WITH OTHER USERS ARE ENTIRELY AT YOUR OWN RISK AND DISCRETION.
+      </div>
+    </div>
+
+    <div class="section-block" id="s10">
+      <h2><span class="sec-num">§10.</span> Limitation of Liability and Indemnification</h2>
+      <p><strong>10.1 Limitation of Liability:</strong></p>
+      <div class="caps-block">
+        TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, ZUMPA, ITS FOUNDERS, DIRECTORS, OFFICERS, EMPLOYEES, AGENTS, AND AFFILIATES SHALL HAVE ZERO (₹0) LIABILITY — DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE — ARISING FROM OR IN CONNECTION WITH: (I) YOUR USE OF OR INABILITY TO USE THE APPLICATION; (II) ANY INTERACTION, COMMUNICATION, ARRANGEMENT, AGREEMENT, DISPUTE, OR TRANSACTION BETWEEN YOU AND ANY OTHER USER; (III) ANY USER-GENERATED CONTENT, INCLUDING FALSE, MISLEADING, DEFAMATORY, OR INFRINGING CONTENT POSTED BY OTHER USERS; (IV) ANY LOSS, INJURY, HARM, OR DAMAGE OF ANY KIND ARISING FROM GIGS, EVENTS, OR OFFLINE INTERACTIONS; (V) ANY INTERRUPTION, ERROR, DATA LOSS, OR SECURITY BREACH IN THE APPLICATION OR IN THIRD-PARTY SERVICES; OR (VI) ANY UNAUTHORISED ACCESS TO YOUR ACCOUNT. ZUMPA'S AGGREGATE LIABILITY, IF ANY, SHALL IN NO EVENT EXCEED ZERO RUPEES (₹0). THE APPLICATION IS FREE TO USE, AND YOU EXPRESSLY ACKNOWLEDGE AND ACCEPT ALL RISKS ASSOCIATED WITH ITS USE.
+      </div>
+      <p><strong>10.2 Indemnification:</strong> You agree to indemnify, defend, and hold harmless Zumpa, its founders, directors, officers, employees, and agents from and against any and all claims, demands, actions, losses, damages, liabilities, costs, and expenses (including reasonable legal fees) arising from or in connection with: (i) your use of the Application or breach of these Terms; (ii) your interactions, arrangements, or disputes with other users; (iii) your content or any infringement of third-party rights; or (iv) any claim by a third party arising from your conduct on or through the Application.</p>
+    </div>
+
+    <div class="section-block" id="s11">
+      <h2><span class="sec-num">§11.</span> No Financial Transactions</h2>
+      <p><strong>11.1</strong> Zumpa does not process, hold, transfer, facilitate, or have any involvement whatsoever in any financial transaction between users. The Application does not include and shall not be construed to include any payment gateway, digital wallet, escrow mechanism, billing system, or any other financial infrastructure. All financial arrangements between users are exclusively private matters outside the scope of this platform. Each user is solely responsible for compliance with all applicable tax laws — including the Goods and Services Tax Act and the Income Tax Act, 1961 — with respect to any income earned in connection with arrangements facilitated through the Application.</p>
+    </div>
+
+    <div class="section-block" id="s12">
+      <h2><span class="sec-num">§12.</span> Termination and Data Retention</h2>
+      <p><strong>12.1</strong> Zumpa reserves the right to suspend or permanently terminate your account at any time, with or without cause, including for any actual or suspected violation of these Terms, without prior notice and without liability of any kind.</p>
+      <p><strong>12.2</strong> Upon termination or account deletion: (i) your profile, listings, and associated content shall be removed from the Application; (ii) personal data shall be deleted within thirty (30) days, except where retention is required by applicable law; (iii) security logs shall be retained for up to ninety (90) days; (iv) data subject to statutory retention obligations under applicable Indian law may be retained for up to seven (7) years; and (v) anonymised or aggregated data may be retained indefinitely. You may request account deletion at any time by contacting <a href="mailto:support@zumpa.in" style="color:var(--purple);">support@zumpa.in</a>.</p>
+    </div>
+
+    <div class="section-block" id="s13">
+      <h2><span class="sec-num">§13.</span> Force Majeure</h2>
+      <p><strong>13.1</strong> Zumpa shall not be liable for any failure, delay, or degradation in performance of its obligations under these Terms arising from causes beyond its reasonable control, including without limitation acts of God, natural disasters, flood, fire, earthquake, epidemic, pandemic, war, terrorism, civil unrest, government actions or directives, internet or telecommunications infrastructure failures, power outages, or disruptions to third-party service providers.</p>
+    </div>
+
+    <div class="section-block" id="s14">
+      <h2><span class="sec-num">§14.</span> Governing Law and Dispute Resolution</h2>
+      <p><strong>14.1</strong> These Terms shall be governed by and construed in accordance with the laws of the Republic of India, without regard to conflict of law principles.</p>
+      <p><strong>14.2</strong> Any dispute, controversy, or claim arising out of or relating to these Terms, their breach, termination, validity, or the use of the Application shall be referred to and finally resolved by binding arbitration before a sole arbitrator in accordance with the Arbitration and Conciliation Act, 1996, as amended. The seat and venue of arbitration shall be Agra, Uttar Pradesh, India. The language of arbitration shall be English. The arbitrator's award shall be final and binding on the parties.</p>
+      <p><strong>14.3</strong> Nothing in this clause shall preclude either party from seeking interim relief or injunctive remedies from courts of competent jurisdiction in Agra, Uttar Pradesh, India, pending the constitution of an arbitral tribunal.</p>
+    </div>
+
+    <div class="section-block" id="s15">
+      <h2><span class="sec-num">§15.</span> Modifications</h2>
+      <p><strong>15.1</strong> Zumpa reserves the right to modify or update these Terms at any time. Material modifications shall be communicated to users through a notice within the Application prior to the modified Terms taking effect. Continued use of the Application following such notification shall constitute unconditional acceptance of the modified Terms. Users who do not accept modified Terms are required to cease use of the Application and request account deletion.</p>
+    </div>
+
+    <div class="section-block" id="s16">
+      <h2><span class="sec-num">§16.</span> Contact</h2>
+      <p><strong>16.1</strong> For questions, complaints, or legal notices relating to these Terms:</p>
+      <div class="note">
+        <strong>Zumpa Support Team</strong><br>
+        <strong>Email:</strong> <a href="mailto:support@zumpa.in" style="color:var(--purple);">support@zumpa.in</a><br>
+        <strong>Address:</strong> Agra, Uttar Pradesh, India
+      </div>
+    </div>
+
+  </main>
 </div>
 
 <footer>
@@ -322,7 +282,7 @@
     <a href="/privacy">Privacy Policy</a>
     <a href="mailto:support@zumpa.in">support@zumpa.in</a>
   </div>
-  <div class="footer-copy">© 2026 Zumpa. All rights reserved.</div>
+  <div class="footer-copy">© 2026 Zumpa. All rights reserved. · Agra, Uttar Pradesh, India</div>
 </footer>
 
 </body>

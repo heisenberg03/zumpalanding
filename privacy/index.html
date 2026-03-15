@@ -14,140 +14,121 @@
     :root {
       --purple:      #541AA3;
       --purple-deep: #260A52;
-      --purple-soft: #EDE8FA;
       --text-dark:   #111827;
       --text-mid:    #374151;
       --text-muted:  #6B7280;
-      --border:      #E5E7EB;
-      --bg-light:    #F9F8FE;
+      --border:      #D1D5DB;
+      --bg:          #F9F9F9;
     }
 
     html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; background: var(--bg-light); color: var(--text-dark); }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text-dark); font-size: .875rem; }
 
     nav {
-      background: var(--purple); padding: 1rem 2.5rem;
+      background: var(--purple); padding: .85rem 2.5rem;
       display: flex; align-items: center; justify-content: space-between;
     }
-    .nav-logo { font-size: 1.45rem; font-weight: 900; color: #fff; text-decoration: none; }
+    .nav-logo { font-size: 1.3rem; font-weight: 900; color: #fff; text-decoration: none; }
     .nav-back {
-      color: rgba(255,255,255,0.8); font-size: .85rem; font-weight: 600;
-      text-decoration: none; display: flex; align-items: center; gap: .4rem;
-      transition: color .2s;
+      color: rgba(255,255,255,0.75); font-size: .8rem; font-weight: 500;
+      text-decoration: none; transition: color .2s;
     }
     .nav-back:hover { color: #fff; }
 
     .page-hero {
-      background: var(--purple); padding: 3rem 2rem 4rem; text-align: center;
-      position: relative;
+      background: var(--purple); padding: 2rem 2.5rem 2.5rem;
+      border-bottom: 3px solid var(--purple-deep);
     }
-    .page-hero::after {
-      content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 50px;
-      background: var(--bg-light);
-      clip-path: ellipse(55% 100% at 50% 100%);
-    }
-    .page-hero h1 { font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 900; color: #fff; margin-bottom: .5rem; }
-    .page-hero .date { color: rgba(255,255,255,0.65); font-size: .875rem; font-weight: 500; }
+    .page-hero h1 { font-size: 1.5rem; font-weight: 800; color: #fff; margin-bottom: .3rem; letter-spacing: -.3px; }
+    .page-hero .meta { color: rgba(255,255,255,0.6); font-size: .78rem; }
 
-    .content-wrap {
-      max-width: 780px; margin: 0 auto;
-      padding: 3.5rem 2rem 6rem;
+    .layout {
+      max-width: 900px; margin: 0 auto;
+      display: grid; grid-template-columns: 200px 1fr; gap: 0;
+      align-items: start;
     }
 
-    .toc-box {
-      background: #fff; border: 1.5px solid var(--border);
-      border-radius: 18px; padding: 1.75rem; margin-bottom: 3rem;
+    .toc-sidebar {
+      position: sticky; top: 0;
+      padding: 2rem 1.25rem 2rem 0;
+      border-right: 1px solid var(--border);
+      min-height: 100vh;
     }
-    .toc-title { font-size: .8rem; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 1.5px; color: var(--purple); margin-bottom: 1rem; }
-    .toc-list { list-style: none; display: flex; flex-direction: column; gap: .4rem; }
+    .toc-label {
+      font-size: .65rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1.5px; color: var(--text-muted); margin-bottom: .75rem;
+    }
+    .toc-list { list-style: none; }
+    .toc-list li { border-bottom: 1px solid #EEEEEE; }
     .toc-list a {
-      color: var(--text-mid); font-size: .875rem; font-weight: 500;
-      text-decoration: none; display: flex; align-items: center; gap: .5rem;
-      transition: color .2s;
+      display: block; padding: .4rem .25rem;
+      color: var(--text-muted); font-size: .75rem; font-weight: 500;
+      text-decoration: none; transition: color .15s; line-height: 1.4;
     }
     .toc-list a:hover { color: var(--purple); }
-    .toc-num { color: var(--purple); font-weight: 700; font-size: .8rem; }
+    .toc-num { font-weight: 700; color: var(--purple); margin-right: .3rem; }
 
-    .section-block { margin-bottom: 3rem; }
+    @media (max-width: 640px) {
+      .layout { grid-template-columns: 1fr; }
+      .toc-sidebar { display: none; }
+    }
+
+    .doc-body { padding: 2rem 0 4rem 2.5rem; }
+
+    .intro-para {
+      font-size: .875rem; color: var(--text-mid); line-height: 1.85;
+      padding-bottom: 1.25rem; margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .intro-para strong { color: var(--text-dark); }
+
+    .section-block { margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
+    .section-block:last-child { border-bottom: none; }
 
     .section-block h2 {
-      font-size: 1.2rem; font-weight: 800; color: var(--text-dark);
-      margin-bottom: 1rem; padding-bottom: .6rem;
-      border-bottom: 2px solid var(--purple-soft);
-      display: flex; align-items: center; gap: .6rem;
+      font-size: .8rem; font-weight: 700; color: var(--text-dark);
+      text-transform: uppercase; letter-spacing: 1px; margin-bottom: .85rem;
     }
-    .sec-num {
-      background: var(--purple); color: #fff; border-radius: 6px;
-      font-size: .72rem; font-weight: 800; padding: .2rem .5rem; flex-shrink: 0;
-    }
+    .section-block h2 .sec-num { color: var(--purple); margin-right: .5rem; }
 
     .section-block p {
-      font-size: .925rem; color: var(--text-mid); line-height: 1.8;
-      margin-bottom: .9rem;
+      font-size: .875rem; color: var(--text-mid); line-height: 1.85; margin-bottom: .75rem;
     }
-    .section-block ul { padding-left: 1.25rem; margin-bottom: .9rem; }
+    .section-block ul, .section-block ol { padding-left: 1.5rem; margin-bottom: .75rem; }
     .section-block li {
-      font-size: .925rem; color: var(--text-mid); line-height: 1.8; margin-bottom: .35rem;
+      font-size: .875rem; color: var(--text-mid); line-height: 1.85; margin-bottom: .2rem;
     }
-    .section-block strong { color: var(--text-dark); font-weight: 700; }
+    .section-block strong { color: var(--text-dark); font-weight: 600; }
 
-    .data-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 1rem; margin: 1.25rem 0;
+    .data-table {
+      width: 100%; border-collapse: collapse; margin: .85rem 0; font-size: .82rem;
     }
-    @media (max-width: 560px) { .data-grid { grid-template-columns: 1fr; } }
+    .data-table th {
+      background: #EEEEEE; text-align: left; padding: .45rem .75rem;
+      font-weight: 700; font-size: .72rem; text-transform: uppercase;
+      letter-spacing: .8px; color: var(--text-dark); border: 1px solid var(--border);
+    }
+    .data-table td {
+      padding: .4rem .75rem; border: 1px solid var(--border);
+      color: var(--text-mid); vertical-align: top; line-height: 1.6;
+    }
+    .data-table tr:nth-child(even) td { background: #FAFAFA; }
 
-    .data-box {
-      background: #fff; border: 1.5px solid var(--border);
-      border-radius: 14px; padding: 1.25rem;
+    .note {
+      border-left: 3px solid var(--border); padding: .6rem .9rem; margin: .85rem 0;
+      font-size: .83rem; color: var(--text-muted); line-height: 1.75;
     }
-    .data-box-title {
-      font-size: .75rem; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 1px; margin-bottom: .75rem;
-    }
-    .db-collect { color: var(--purple); }
-    .db-nocollect { color: #059669; }
-
-    .data-box ul { padding-left: 1rem; margin-bottom: 0; }
-    .data-box li { font-size: .83rem; color: var(--text-mid); margin-bottom: .3rem; }
-
-    .highlight-box {
-      background: var(--purple-soft); border-left: 4px solid var(--purple);
-      border-radius: 0 12px 12px 0; padding: 1rem 1.25rem; margin: 1rem 0;
-    }
-    .highlight-box p { margin-bottom: 0; }
-
-    .rights-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
-      gap: .85rem; margin-top: 1rem;
-    }
-    .right-pill {
-      background: #fff; border: 1.5px solid var(--border);
-      border-radius: 12px; padding: .9rem 1rem;
-      display: flex; align-items: flex-start; gap: .65rem;
-    }
-    .right-icon { font-size: 1.25rem; flex-shrink: 0; }
-    .right-text strong { font-size: .85rem; font-weight: 700; color: var(--text-dark); display: block; margin-bottom: .15rem; }
-    .right-text span { font-size: .78rem; color: var(--text-muted); }
-
-    .contact-card {
-      background: #fff; border: 1.5px solid var(--border);
-      border-radius: 18px; padding: 1.75rem; margin-top: 1rem;
-    }
-    .contact-card p { margin-bottom: .4rem; }
-    .contact-card a { color: var(--purple); font-weight: 600; text-decoration: none; }
 
     footer {
-      background: var(--purple-deep); padding: 2rem 2.5rem;
+      background: var(--purple-deep); padding: 1.5rem 2.5rem;
       display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 1rem;
+      flex-wrap: wrap; gap: .75rem; margin-top: 2rem;
     }
-    .footer-logo { font-size: 1.3rem; font-weight: 900; color: #fff; }
+    .footer-logo { font-size: 1.1rem; font-weight: 900; color: #fff; }
     .footer-links { display: flex; gap: 1.25rem; flex-wrap: wrap; }
-    .footer-links a { color: rgba(255,255,255,0.6); font-size: .82rem; text-decoration: none; transition: color .2s; }
+    .footer-links a { color: rgba(255,255,255,0.55); font-size: .78rem; text-decoration: none; transition: color .2s; }
     .footer-links a:hover { color: #fff; }
-    .footer-copy { font-size: .75rem; color: rgba(255,255,255,0.35); }
+    .footer-copy { font-size: .72rem; color: rgba(255,255,255,0.3); width: 100%; }
   </style>
 </head>
 <body>
@@ -159,191 +140,138 @@
 
 <div class="page-hero">
   <h1>Privacy Policy</h1>
-  <p class="date">Effective Date: March 15, 2026</p>
+  <p class="meta">Effective Date: 15 March 2026 &nbsp;·&nbsp; Applies to: Zumpa Mobile Application &nbsp;·&nbsp; Jurisdiction: India</p>
 </div>
 
-<div class="content-wrap">
-
-  <div class="section-block">
-    <p>Zumpa ("Zumpa," "we," "us," or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, store, and protect your personal data when you use our mobile application ("App"). We comply with the Digital Personal Data Protection Act, 2023 ("DPDP Act"), the Information Technology Act, 2000 ("IT Act"), and the Information Technology (Reasonable Security Practices and Procedures and Sensitive Personal Data or Information) Rules, 2011.</p>
-    <div class="highlight-box">
-      <p>This Policy applies only to users in India. The App is intended for use within India only.</p>
-    </div>
-  </div>
-
-  <div class="toc-box">
-    <div class="toc-title">Table of Contents</div>
+<div class="layout">
+  <aside class="toc-sidebar">
+    <div class="toc-label">Contents</div>
     <ul class="toc-list">
-      <li><a href="#s1"><span class="toc-num">01</span> Information We Collect</a></li>
-      <li><a href="#s2"><span class="toc-num">02</span> How We Use Your Information</a></li>
-      <li><a href="#s3"><span class="toc-num">03</span> Sharing of Information</a></li>
-      <li><a href="#s4"><span class="toc-num">04</span> Data Storage, Security & Cross-Border Transfers</a></li>
-      <li><a href="#s5"><span class="toc-num">05</span> Your Rights</a></li>
-      <li><a href="#s6"><span class="toc-num">06</span> Data Retention</a></li>
-      <li><a href="#s7"><span class="toc-num">07</span> Children's Privacy</a></li>
-      <li><a href="#s8"><span class="toc-num">08</span> Changes to This Policy</a></li>
-      <li><a href="#s9"><span class="toc-num">09</span> Grievance Officer</a></li>
+      <li><a href="#s1"><span class="toc-num">§1</span> Information Collected</a></li>
+      <li><a href="#s2"><span class="toc-num">§2</span> Purpose of Processing</a></li>
+      <li><a href="#s3"><span class="toc-num">§3</span> Disclosure of Information</a></li>
+      <li><a href="#s4"><span class="toc-num">§4</span> Storage, Security &amp; Transfers</a></li>
+      <li><a href="#s5"><span class="toc-num">§5</span> Rights of Data Principals</a></li>
+      <li><a href="#s6"><span class="toc-num">§6</span> Retention Periods</a></li>
+      <li><a href="#s7"><span class="toc-num">§7</span> Minors</a></li>
+      <li><a href="#s8"><span class="toc-num">§8</span> Amendments</a></li>
+      <li><a href="#s9"><span class="toc-num">§9</span> Grievance Officer</a></li>
     </ul>
-  </div>
+  </aside>
 
-  <div class="section-block" id="s1">
-    <h2><span class="sec-num">01</span> Information We Collect</h2>
-    <p>We collect only the minimum data necessary to operate the App:</p>
+  <main class="doc-body">
 
-    <div class="data-grid">
-      <div class="data-box">
-        <div class="data-box-title db-collect">What we collect</div>
-        <ul>
-          <li>Phone number (OTP authentication)</li>
-          <li>Email address (optional)</li>
-          <li>Username, full name, bio, profile picture</li>
-          <li>Professional type and skill categories</li>
-          <li>Gig descriptions and portfolio content</li>
-          <li>In-app chat messages</li>
-          <li>Social media links (if voluntarily provided)</li>
-          <li>Device push notification token</li>
-          <li>Device OS type and app version</li>
-          <li>Server-side logs (IP, timestamps, API metadata — security only)</li>
-        </ul>
-      </div>
-      <div class="data-box">
-        <div class="data-box-title db-nocollect">What we do NOT collect</div>
-        <ul>
-          <li>Financial or payment information</li>
-          <li>Biometric, health, or sensitive personal data</li>
-          <li>IMEI, MAC address, or advertising IDs</li>
-          <li>GPS or background location data</li>
-          <li>Data from third-party sources or data brokers</li>
-          <li>Cookies or web tracking technologies</li>
-        </ul>
-      </div>
+    <div class="intro-para">
+      Zumpa ("Zumpa," "we," "us," or "our") is committed to the responsible and lawful processing of personal data. This Privacy Policy ("Policy") sets forth the manner in which personal data is collected, processed, stored, disclosed, and protected in connection with your use of the Zumpa mobile application ("Application"). This Policy is issued in compliance with the <strong>Digital Personal Data Protection Act, 2023 ("DPDP Act")</strong>, the <strong>Information Technology Act, 2000 ("IT Act")</strong>, and the Information Technology (Reasonable Security Practices and Procedures and Sensitive Personal Data or Information) Rules, 2011 ("SPDI Rules"). This Policy governs only users located within the territory of India. Use of the Application outside India is not authorised.
     </div>
-  </div>
 
-  <div class="section-block" id="s2">
-    <h2><span class="sec-num">02</span> How We Use Your Information</h2>
-    <p>We use your data solely for:</p>
-    <ul>
-      <li><strong>Authentication:</strong> Verifying your identity via OTP (phone number processed by msg91 in compliance with TRAI/DLT regulations).</li>
-      <li><strong>Providing the App:</strong> Displaying your profile to relevant users, showing gig listings, enabling in-app messaging and notifications.</li>
-      <li><strong>Security and fraud prevention:</strong> Server logs are used exclusively to detect misuse and prevent unauthorised access. Retained for 90 days, then deleted. Never used for profiling or advertising.</li>
-      <li><strong>Legal compliance:</strong> Responding to lawful requests from government authorities or courts.</li>
-    </ul>
-    <div class="highlight-box">
-      <p>We do <strong>NOT</strong> use your data for advertising, targeted marketing, behavioural profiling, selling to third parties, or automated decision-making. <strong>Legal basis:</strong> Your explicit consent obtained during sign-up. You may withdraw consent at any time (see Section 5).</p>
+    <div class="section-block" id="s1">
+      <h2><span class="sec-num">§1.</span> Information Collected</h2>
+      <p><strong>1.1</strong> Zumpa collects only such personal data as is strictly necessary for the lawful operation of the Application. The categories of data collected are as follows:</p>
+      <table class="data-table">
+        <thead>
+          <tr><th>Category</th><th>Data Elements</th><th>Collected</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Identity &amp; Contact</td><td>Phone number, email address (optional), username, full name</td><td>Yes</td></tr>
+          <tr><td>Profile Information</td><td>Bio, profile picture, professional type, skill categories</td><td>Yes</td></tr>
+          <tr><td>Platform Content</td><td>Gig descriptions, portfolio media, venue/location details (manually entered), in-app messages, social media links (voluntary)</td><td>Yes</td></tr>
+          <tr><td>Device &amp; Technical</td><td>Push notification token (FCM), device OS type, application version</td><td>Yes</td></tr>
+          <tr><td>Security Logs</td><td>IP address, timestamps, API request metadata (security use only; 90-day retention)</td><td>Yes</td></tr>
+          <tr><td>Financial Information</td><td>Payment data, bank details, card information</td><td><strong>No</strong></td></tr>
+          <tr><td>Sensitive Personal Data</td><td>Biometrics, health, caste, religion, sexual orientation, political affiliation</td><td><strong>No</strong></td></tr>
+          <tr><td>Device Identifiers</td><td>IMEI, MAC address, advertising ID, persistent device identifiers</td><td><strong>No</strong></td></tr>
+          <tr><td>Location Data</td><td>GPS coordinates, background or real-time location</td><td><strong>No</strong></td></tr>
+          <tr><td>Third-Party Data</td><td>Data purchased from or obtained via data brokers or external sources</td><td><strong>No</strong></td></tr>
+          <tr><td>Tracking Technologies</td><td>Cookies, web beacons, pixel trackers</td><td><strong>No</strong></td></tr>
+        </tbody>
+      </table>
+      <p><strong>1.2</strong> Venue or location details associated with gig listings are entered manually by users and do not constitute real-time device location data.</p>
     </div>
-  </div>
 
-  <div class="section-block" id="s3">
-    <h2><span class="sec-num">03</span> Sharing of Information</h2>
-    <p>We do not sell, rent, trade, or share your personal data for commercial purposes. Sharing is strictly limited to:</p>
-    <ul>
-      <li><strong>msg91 / VI DLT</strong> — SMS delivery for OTP (processes your phone number)</li>
-      <li><strong>Firebase Cloud Messaging (Google)</strong> — push notifications (processes your device token)</li>
-      <li><strong>Cloudflare R2</strong> — file storage for profile pictures and portfolio media</li>
-      <li><strong>Database hosting provider</strong> — stores your account data in encrypted Postgres databases</li>
-      <li><strong>Other users</strong> — your profile and gig listings are visible to other users as necessary for the platform to function</li>
-      <li><strong>Legal authorities</strong> — if required by a valid court order or government direction under applicable Indian law (we will notify you unless prohibited by law)</li>
-    </ul>
-    <p>We do not share data with advertisers, analytics providers, or data brokers.</p>
-  </div>
-
-  <div class="section-block" id="s4">
-    <h2><span class="sec-num">04</span> Data Storage, Security & Cross-Border Transfers</h2>
-    <p><strong>Storage:</strong> Your data is stored in encrypted PostgreSQL databases with access controls, authentication, and regular security reviews.</p>
-    <p><strong>Security measures:</strong></p>
-    <ul>
-      <li>Encryption of data in transit (TLS/HTTPS) and at rest where applicable.</li>
-      <li>Access to personal data restricted to authorised personnel only.</li>
-      <li>Regular review of security practices.</li>
-      <li>No storage of passwords (authentication is OTP-based).</li>
-    </ul>
-    <p><strong>Cross-border transfers:</strong> Some service providers (Cloudflare, Firebase/Google) may process or store data on servers outside India. We ensure such transfers are governed by data processing agreements providing protection equivalent to Indian law. By using the App, you consent to such transfers as necessary to provide the service.</p>
-    <p><strong>Data breach notification:</strong> In the event of a personal data breach, we will notify affected users and the Data Protection Board of India within 72 hours as required under the DPDP Act.</p>
-  </div>
-
-  <div class="section-block" id="s5">
-    <h2><span class="sec-num">05</span> Your Rights</h2>
-    <p>Under the DPDP Act, you have the following rights:</p>
-    <div class="rights-grid">
-      <div class="right-pill">
-        <span class="right-icon">👁️</span>
-        <div class="right-text">
-          <strong>Access</strong>
-          <span>View your personal data held by us</span>
-        </div>
-      </div>
-      <div class="right-pill">
-        <span class="right-icon">✏️</span>
-        <div class="right-text">
-          <strong>Correct</strong>
-          <span>Update inaccurate or incomplete data</span>
-        </div>
-      </div>
-      <div class="right-pill">
-        <span class="right-icon">🗑️</span>
-        <div class="right-text">
-          <strong>Erase</strong>
-          <span>Request account and data deletion</span>
-        </div>
-      </div>
-      <div class="right-pill">
-        <span class="right-icon">🔒</span>
-        <div class="right-text">
-          <strong>Withdraw Consent</strong>
-          <span>May result in loss of App access</span>
-        </div>
-      </div>
-      <div class="right-pill">
-        <span class="right-icon">👤</span>
-        <div class="right-text">
-          <strong>Nominate</strong>
-          <span>Designate someone to act on your behalf</span>
-        </div>
-      </div>
-      <div class="right-pill">
-        <span class="right-icon">⚖️</span>
-        <div class="right-text">
-          <strong>Grievance</strong>
-          <span>Escalate to Data Protection Board</span>
-        </div>
-      </div>
+    <div class="section-block" id="s2">
+      <h2><span class="sec-num">§2.</span> Purpose of Processing</h2>
+      <p><strong>2.1</strong> Personal data shall be processed exclusively for the following purposes and shall not be processed for any purpose beyond those specified herein:</p>
+      <ul>
+        <li><strong>Authentication and Identity Verification:</strong> Phone numbers are transmitted to msg91 (operating under TRAI/DLT regulations) solely for OTP-based authentication. No password is stored.</li>
+        <li><strong>Service Delivery:</strong> To display user profiles and gig listings to relevant parties, facilitate in-application messaging, and deliver push notifications through Firebase Cloud Messaging.</li>
+        <li><strong>Security and Fraud Prevention:</strong> Server logs, including IP addresses, request timestamps, and API metadata, are retained for a period not exceeding ninety (90) days and are used exclusively to detect and investigate misuse, unauthorised access, and security incidents. Such logs shall not be used for profiling, analytics, or advertising under any circumstances.</li>
+        <li><strong>Legal Compliance:</strong> To respond to lawfully issued orders, directions, or requests from courts or competent government authorities under applicable Indian law.</li>
+      </ul>
+      <p><strong>2.2</strong> Zumpa does not process personal data for advertising, targeted marketing, behavioural profiling, sale or commercialisation to third parties, or automated decision-making of any nature.</p>
+      <p><strong>2.3 Legal Basis:</strong> All processing is conducted on the basis of explicit, informed consent obtained from the Data Principal at the time of registration. Consent may be withdrawn at any time in accordance with Section 5 of this Policy.</p>
     </div>
-    <p style="margin-top:1rem;">To exercise any right, contact our Grievance Officer at <a href="mailto:support@zumpa.in" style="color:var(--purple);font-weight:600;">support@zumpa.in</a>. We will respond within 30 days.</p>
-  </div>
 
-  <div class="section-block" id="s6">
-    <h2><span class="sec-num">06</span> Data Retention</h2>
-    <ul>
-      <li><strong>Account data</strong> (name, phone, profile, listings): Retained while your account is active. Deleted within 30 days of account deletion request.</li>
-      <li><strong>Server logs</strong> (IP, timestamps, API metadata): Retained for 90 days, then permanently deleted.</li>
-      <li><strong>Chat messages:</strong> Retained while your account is active. Deleted within 30 days of account deletion.</li>
-      <li><strong>Legal/regulatory obligations:</strong> Data required under applicable Indian law (e.g., Income Tax Act) may be retained for up to 7 years.</li>
-      <li><strong>Anonymised/aggregated data:</strong> May be retained indefinitely as it cannot identify you.</li>
-    </ul>
-  </div>
-
-  <div class="section-block" id="s7">
-    <h2><span class="sec-num">07</span> Children's Privacy</h2>
-    <p>The App is intended for users aged 18 and above. We do not knowingly collect personal data from anyone under 18. If we become aware of underage use, we will immediately terminate the account and delete all associated data. Parents or guardians who discover unauthorised use by a minor should contact us at <a href="mailto:support@zumpa.in" style="color:var(--purple);font-weight:600;">support@zumpa.in</a>.</p>
-  </div>
-
-  <div class="section-block" id="s8">
-    <h2><span class="sec-num">08</span> Changes to This Policy</h2>
-    <p>We may update this Policy to reflect changes in our practices or applicable law. Material changes will be notified through the App. Continued use after notification constitutes acceptance. If you do not agree, you must stop using the App and request account deletion.</p>
-  </div>
-
-  <div class="section-block" id="s9">
-    <h2><span class="sec-num">09</span> Grievance Officer</h2>
-    <p>For privacy complaints, data requests, or to exercise your rights:</p>
-    <div class="contact-card">
-      <p><strong>Grievance Officer:</strong> Support Team</p>
-      <p>Email: <a href="mailto:support@zumpa.in">support@zumpa.in</a></p>
-      <p>Address: Agra, Uttar Pradesh, India</p>
-      <p style="margin-top:.75rem;font-size:.83rem;color:var(--text-muted);">We will acknowledge complaints within 24 hours and resolve them within 30 days, in compliance with IT Rules and the DPDP Act. If you are unsatisfied, you may escalate to the Data Protection Board of India.</p>
+    <div class="section-block" id="s3">
+      <h2><span class="sec-num">§3.</span> Disclosure of Information</h2>
+      <p><strong>3.1</strong> Zumpa does not sell, rent, trade, lease, or otherwise transfer personal data to any third party for commercial purposes. Disclosure is strictly limited to the following categories of recipients, each bound by appropriate data processing agreements:</p>
+      <ul>
+        <li><strong>msg91 / VI DLT:</strong> Processes phone numbers solely for OTP transmission, in compliance with TRAI and DLT regulatory requirements.</li>
+        <li><strong>Firebase Cloud Messaging — Google LLC:</strong> Processes device push notification tokens solely for the delivery of in-application notifications.</li>
+        <li><strong>Cloudflare R2:</strong> Stores user-uploaded profile images and portfolio media.</li>
+        <li><strong>Database Hosting Provider:</strong> Hosts encrypted PostgreSQL databases containing user account data.</li>
+        <li><strong>Other Users of the Application:</strong> Profile information and gig listings are displayed to other users as necessary for platform functionality. Users retain full control over the content they include in their profiles.</li>
+        <li><strong>Competent Legal Authorities:</strong> Personal data may be disclosed pursuant to a valid court order, government direction, or statutory obligation under applicable Indian law. Where disclosure is not prohibited by law, the affected Data Principal shall be notified.</li>
+      </ul>
+      <p><strong>3.2</strong> No personal data is disclosed to advertising networks, analytics providers, data brokers, or any other commercial third party.</p>
     </div>
-  </div>
 
+    <div class="section-block" id="s4">
+      <h2><span class="sec-num">§4.</span> Data Storage, Security, and Cross-Border Transfers</h2>
+      <p><strong>4.1 Storage:</strong> All personal data is stored in encrypted PostgreSQL databases subject to access controls, role-based authentication, and periodic security audits.</p>
+      <p><strong>4.2 Security Measures:</strong> Zumpa implements the following technical and organisational safeguards: (i) encryption of data in transit via TLS/HTTPS and at rest where applicable; (ii) restriction of access to personal data to authorised personnel only, on a need-to-know basis; (iii) periodic review and assessment of security practices and infrastructure; and (iv) OTP-based authentication eliminating the need to store passwords.</p>
+      <p><strong>4.3 Cross-Border Transfers:</strong> Certain service providers, including Cloudflare, Inc. and Google LLC (Firebase), may process or store data on servers located outside the territory of India. Zumpa ensures that all such cross-border transfers are subject to data processing agreements that provide a standard of protection materially equivalent to that required under Indian data protection law. By using the Application, the Data Principal consents to such transfers to the extent necessary for service provision. Zumpa shall update its infrastructure as required to comply with any data localisation mandates issued under the DPDP Act or subordinate rules.</p>
+      <p><strong>4.4 Breach Notification:</strong> In the event of a personal data breach, Zumpa shall, within seventy-two (72) hours of becoming aware of such breach, notify affected Data Principals and report the incident to the Data Protection Board of India as required under the DPDP Act, and shall take immediate remedial measures to contain and address the breach.</p>
+    </div>
+
+    <div class="section-block" id="s5">
+      <h2><span class="sec-num">§5.</span> Rights of Data Principals</h2>
+      <p><strong>5.1</strong> In accordance with the DPDP Act, every Data Principal is entitled to exercise the following rights with respect to their personal data:</p>
+      <ul>
+        <li><strong>Right of Access (§11 DPDP Act):</strong> To obtain a summary of personal data processed by Zumpa and information regarding the processing activities undertaken in relation to such data.</li>
+        <li><strong>Right of Correction and Updation (§12 DPDP Act):</strong> To have inaccurate, incomplete, or outdated personal data corrected or updated.</li>
+        <li><strong>Right of Erasure (§12 DPDP Act):</strong> To request deletion of personal data and the associated account, subject to applicable legal retention obligations.</li>
+        <li><strong>Right to Withdraw Consent (§6 DPDP Act):</strong> To withdraw previously granted consent at any time. Withdrawal of consent may result in inability to access or use the Application, as core functionality is dependent on data processing.</li>
+        <li><strong>Right of Nomination (§14 DPDP Act):</strong> To nominate an individual authorised to exercise data rights in the event of the Data Principal's death or incapacity.</li>
+        <li><strong>Right of Grievance Redressal (§13 DPDP Act):</strong> To lodge a complaint with the Grievance Officer and, if unsatisfied with the resolution, to escalate to the Data Protection Board of India.</li>
+      </ul>
+      <p><strong>5.2</strong> To exercise any of the foregoing rights, the Data Principal shall submit a request to the Grievance Officer at <a href="mailto:support@zumpa.in" style="color:var(--purple);">support@zumpa.in</a>. Zumpa shall acknowledge the request and respond within thirty (30) days of receipt.</p>
+    </div>
+
+    <div class="section-block" id="s6">
+      <h2><span class="sec-num">§6.</span> Retention Periods</h2>
+      <p><strong>6.1</strong> Personal data shall be retained only for the period necessary to fulfil the purposes for which it was collected, subject to the following schedules:</p>
+      <ul>
+        <li><strong>Account Data</strong> (name, phone number, profile information, gig listings): Retained for the duration of account activity. Deleted within thirty (30) days of a valid account deletion request.</li>
+        <li><strong>Security Logs</strong> (IP addresses, timestamps, API metadata): Retained for ninety (90) days from the date of collection, after which they are permanently and irreversibly deleted.</li>
+        <li><strong>In-Application Chat Messages:</strong> Retained for the duration of account activity. Deleted within thirty (30) days of account deletion.</li>
+        <li><strong>Legally Mandated Retention:</strong> Data subject to retention obligations under applicable Indian law — including but not limited to the Income Tax Act, 1961 — may be retained for a period of up to seven (7) years.</li>
+        <li><strong>Anonymised and Aggregated Data:</strong> Data rendered incapable of identifying any individual may be retained for an indefinite period.</li>
+      </ul>
+    </div>
+
+    <div class="section-block" id="s7">
+      <h2><span class="sec-num">§7.</span> Minors</h2>
+      <p><strong>7.1</strong> The Application is intended exclusively for individuals who have attained the age of eighteen (18) years. Zumpa does not knowingly collect or process personal data from individuals below the age of majority. Upon discovery of any such processing, Zumpa shall forthwith terminate the associated account and delete all personal data collected in connection therewith. Parents or legal guardians who become aware of unauthorised use of the Application by a minor are requested to notify Zumpa at <a href="mailto:support@zumpa.in" style="color:var(--purple);">support@zumpa.in</a>.</p>
+    </div>
+
+    <div class="section-block" id="s8">
+      <h2><span class="sec-num">§8.</span> Amendments to This Policy</h2>
+      <p><strong>8.1</strong> Zumpa reserves the right to amend this Policy at any time to reflect changes in applicable law, regulatory guidance, or operational practices. Material amendments shall be communicated to Data Principals through a notice within the Application prior to the amended Policy taking effect. Continued use of the Application following notification of such amendments shall constitute acceptance of the revised Policy. Data Principals who do not accept the amended Policy are required to cease use of the Application and submit a request for account deletion.</p>
+    </div>
+
+    <div class="section-block" id="s9">
+      <h2><span class="sec-num">§9.</span> Grievance Officer</h2>
+      <p><strong>9.1</strong> In accordance with Rule 5(9) of the SPDI Rules and the DPDP Act, Zumpa has designated a Grievance Officer to receive and address complaints and requests from Data Principals:</p>
+      <div class="note">
+        <strong>Grievance Officer:</strong> Support Team, Zumpa<br>
+        <strong>Email:</strong> <a href="mailto:support@zumpa.in" style="color:var(--purple);">support@zumpa.in</a><br>
+        <strong>Address:</strong> Agra, Uttar Pradesh, India
+      </div>
+      <p><strong>9.2</strong> Zumpa shall acknowledge all complaints within twenty-four (24) hours of receipt and endeavour to resolve them within thirty (30) days, in compliance with the IT Rules and the DPDP Act. Data Principals who remain unsatisfied with the resolution may escalate their complaint to the Data Protection Board of India in accordance with the DPDP Act.</p>
+    </div>
+
+  </main>
 </div>
 
 <footer>
@@ -354,7 +282,7 @@
     <a href="/privacy">Privacy Policy</a>
     <a href="mailto:support@zumpa.in">support@zumpa.in</a>
   </div>
-  <div class="footer-copy">© 2026 Zumpa. All rights reserved.</div>
+  <div class="footer-copy">© 2026 Zumpa. All rights reserved. · Agra, Uttar Pradesh, India</div>
 </footer>
 
 </body>
