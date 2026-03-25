@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Delete Your Account — Zumpa</title>
+  <meta name="description" content="How to request deletion of your Zumpa account and personal data." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --purple:      #541AA3;
+      --purple-deep: #260A52;
+      --text-dark:   #111827;
+      --text-mid:    #374151;
+      --text-muted:  #6B7280;
+      --border:      #D1D5DB;
+      --bg:          #F9F9F9;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text-dark); font-size: .875rem; }
+
+    nav {
+      background: var(--purple); padding: .85rem 2.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { font-size: 1.3rem; font-weight: 900; color: #fff; text-decoration: none; }
+    .nav-back {
+      color: rgba(255,255,255,0.75); font-size: .8rem; font-weight: 500;
+      text-decoration: none; transition: color .2s;
+    }
+    .nav-back:hover { color: #fff; }
+
+    .page-hero {
+      background: var(--purple); padding: 2rem 2.5rem 2.5rem;
+      border-bottom: 3px solid var(--purple-deep);
+    }
+    .page-hero h1 { font-size: 1.5rem; font-weight: 800; color: #fff; margin-bottom: .3rem; letter-spacing: -.3px; }
+    .page-hero .meta { color: rgba(255,255,255,0.6); font-size: .78rem; }
+
+    .layout {
+      max-width: 900px; margin: 0 auto;
+      display: grid; grid-template-columns: 200px 1fr; gap: 0;
+      align-items: start;
+    }
+
+    .toc-sidebar {
+      position: sticky; top: 0;
+      padding: 2rem 1.25rem 2rem 0;
+      border-right: 1px solid var(--border);
+      min-height: 100vh;
+    }
+    .toc-label {
+      font-size: .65rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1.5px; color: var(--text-muted); margin-bottom: .75rem;
+    }
+    .toc-list { list-style: none; }
+    .toc-list li { border-bottom: 1px solid #EEEEEE; }
+    .toc-list a {
+      display: block; padding: .4rem .25rem;
+      color: var(--text-muted); font-size: .75rem; font-weight: 500;
+      text-decoration: none; transition: color .15s; line-height: 1.4;
+    }
+    .toc-list a:hover { color: var(--purple); }
+    .toc-num { font-weight: 700; color: var(--purple); margin-right: .3rem; }
+
+    @media (max-width: 640px) {
+      .layout { grid-template-columns: 1fr; }
+      .toc-sidebar { display: none; }
+    }
+
+    .doc-body { padding: 2rem 0 4rem 2.5rem; }
+
+    .intro-para {
+      font-size: .875rem; color: var(--text-mid); line-height: 1.85;
+      padding-bottom: 1.25rem; margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .intro-para strong { color: var(--text-dark); }
+
+    .section-block { margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
+    .section-block:last-child { border-bottom: none; }
+
+    .section-block h2 {
+      font-size: .8rem; font-weight: 700; color: var(--text-dark);
+      text-transform: uppercase; letter-spacing: 1px; margin-bottom: .85rem;
+    }
+    .section-block h2 .sec-num { color: var(--purple); margin-right: .5rem; }
+
+    .section-block p {
+      font-size: .875rem; color: var(--text-mid); line-height: 1.85; margin-bottom: .75rem;
+    }
+    .section-block ul, .section-block ol { padding-left: 1.5rem; margin-bottom: .75rem; }
+    .section-block li {
+      font-size: .875rem; color: var(--text-mid); line-height: 1.85; margin-bottom: .2rem;
+    }
+    .section-block strong { color: var(--text-dark); font-weight: 600; }
+
+    .note {
+      border-left: 3px solid var(--border); padding: .6rem .9rem; margin: .85rem 0;
+      font-size: .83rem; color: var(--text-muted); line-height: 1.75;
+    }
+    .note a { color: var(--purple); text-decoration: none; }
+    .note a:hover { text-decoration: underline; }
+
+    .steps {
+      list-style: none; padding: 0; margin: .85rem 0 .75rem;
+      counter-reset: step-counter;
+    }
+    .steps li {
+      counter-increment: step-counter;
+      display: flex; align-items: baseline; gap: .6rem;
+      font-size: .875rem; color: var(--text-mid); line-height: 1.85; margin-bottom: .3rem;
+    }
+    .steps li::before {
+      content: counter(step-counter);
+      min-width: 1.4rem; height: 1.4rem;
+      background: var(--purple); color: #fff;
+      font-size: .68rem; font-weight: 700;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: .25rem;
+    }
+
+    footer {
+      background: var(--purple-deep); padding: 1.5rem 2.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: .75rem; margin-top: 2rem;
+    }
+    .footer-logo { font-size: 1.1rem; font-weight: 900; color: #fff; }
+    .footer-links { display: flex; gap: 1.25rem; flex-wrap: wrap; }
+    .footer-links a { color: rgba(255,255,255,0.55); font-size: .78rem; text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: #fff; }
+    .footer-copy { font-size: .72rem; color: rgba(255,255,255,0.3); width: 100%; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">zumpa</a>
+  <a href="/" class="nav-back">← Back to Home</a>
+</nav>
+
+<div class="page-hero">
+  <h1>Delete Your Account</h1>
+  <p class="meta">Account &amp; Data Deletion · Applies to: Zumpa Mobile Application</p>
+</div>
+
+<div class="layout">
+  <aside class="toc-sidebar">
+    <div class="toc-label">Contents</div>
+    <ul class="toc-list">
+      <li><a href="#s1"><span class="toc-num">§1</span> Delete In-App</a></li>
+      <li><a href="#s2"><span class="toc-num">§2</span> Delete by Email</a></li>
+      <li><a href="#s3"><span class="toc-num">§3</span> What Gets Deleted</a></li>
+      <li><a href="#s4"><span class="toc-num">§4</span> Data Retention</a></li>
+    </ul>
+  </aside>
+
+  <main class="doc-body">
+
+    <div class="intro-para">
+      You can request deletion of your Zumpa account and all associated personal data at any time — whether or not you still have access to the app. Two options are available: directly from within the app, or by sending an email to our support team. All deletion requests are processed within <strong>7 business days</strong>.
+    </div>
+
+    <div class="section-block" id="s1">
+      <h2><span class="sec-num">§1.</span> Delete In-App</h2>
+      <p>If you have access to the Zumpa app, account deletion can be initiated directly from your profile settings:</p>
+      <ol class="steps">
+        <li>Open the Zumpa app and go to your <strong>Profile</strong></li>
+        <li>Tap <strong>Settings</strong></li>
+        <li>Select <strong>Delete Account</strong></li>
+        <li>Confirm the deletion when prompted</li>
+      </ol>
+      <p>Your account and data will be permanently removed within 7 business days of confirmation.</p>
+    </div>
+
+    <div class="section-block" id="s2">
+      <h2><span class="sec-num">§2.</span> Delete by Email</h2>
+      <p>If you no longer have access to the app, you can submit a deletion request by email:</p>
+      <div class="note">
+        <strong>Email:</strong> <a href="mailto:support@zumpa.in">support@zumpa.in</a><br>
+        <strong>Subject:</strong> Delete My Zumpa Account<br>
+        <strong>Include:</strong> The phone number linked to your account<br>
+        <strong>Processing time:</strong> Within 7 business days of receiving your request
+      </div>
+      <p>We will send a confirmation once your account has been deleted.</p>
+    </div>
+
+    <div class="section-block" id="s3">
+      <h2><span class="sec-num">§3.</span> What Gets Deleted</h2>
+      <p>Upon processing your deletion request, the following data is permanently removed from our systems:</p>
+      <ul>
+        <li>Profile information — name, phone number, bio, photo, and preferences</li>
+        <li>Gig listings you have created</li>
+        <li>Booking history and in-app chat messages</li>
+        <li>Reviews and ratings associated with your account</li>
+      </ul>
+    </div>
+
+    <div class="section-block" id="s4">
+      <h2><span class="sec-num">§4.</span> Data Retention</h2>
+      <p>Some records may be retained beyond the deletion date where required by law:</p>
+      <ul>
+        <li><strong>Security logs</strong> (IP addresses, timestamps) are retained for up to <strong>90 days</strong> from the date of collection and are then permanently deleted — this retention period is unaffected by account deletion.</li>
+        <li><strong>Legal and transaction records</strong> may be kept for up to <strong>7 years</strong> where required under applicable Indian law (e.g. Income Tax Act, 1961).</li>
+      </ul>
+      <p>For full details on how your data is handled, please review our <a href="/privacy" style="color:var(--purple);">Privacy Policy</a>.</p>
+    </div>
+
+  </main>
+</div>
+
+<footer>
+  <div class="footer-logo">zumpa</div>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/terms">Terms of Service</a>
+    <a href="/privacy">Privacy Policy</a>
+    <a href="mailto:support@zumpa.in">support@zumpa.in</a>
+  </div>
+  <div class="footer-copy">© 2026 Zumpa. All rights reserved. · Agra, Uttar Pradesh, India</div>
+</footer>
+
+</body>
+</html>
