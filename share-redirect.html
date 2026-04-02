@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zumpa</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #541AA3;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      padding: 24px;
+      text-align: center;
+    }
+    h1 { font-size: 2rem; font-weight: 800; }
+    p  { font-size: 1rem; opacity: 0.85; max-width: 320px; line-height: 1.5; }
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      border-radius: 999px;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      background: #fff;
+      color: #541AA3;
+      min-width: 220px;
+    }
+    .btn + .btn { background: rgba(255,255,255,0.15); color: #fff; border: 2px solid rgba(255,255,255,0.4); }
+  </style>
+</head>
+<body>
+  <h1>Zumpa</h1>
+  <p id="msg">Opening Zumpa…</p>
+  <a id="store-btn" class="btn" href="#" style="display:none">Download Zumpa</a>
+  <a id="alt-btn"   class="btn" href="#" style="display:none">View in Browser</a>
+
+  <script>
+    (function () {
+      var path     = window.location.pathname;          // e.g. /share/gig/123
+      var deepLink = 'zumpa:/' + path;                  // zumpa://share/gig/123
+
+      var IOS_URL     = 'https://apps.apple.com/app/id6761260769';
+      var ANDROID_URL = 'https://play.google.com/store/apps/details?id=com.zumpa.zumpa';
+
+      var isIOS     = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+      var isAndroid = /Android/.test(navigator.userAgent);
+
+      var storeUrl = isIOS ? IOS_URL : isAndroid ? ANDROID_URL : null;
+
+      var storeBtn = document.getElementById('store-btn');
+      var altBtn   = document.getElementById('alt-btn');
+      var msg      = document.getElementById('msg');
+
+      // Try to hand off to the native app via the custom scheme.
+      // Universal Links / App Links should have already opened the app if it was
+      // installed — this is only reached when the app is NOT installed.
+      if (storeUrl) {
+        storeBtn.href        = storeUrl;
+        storeBtn.textContent = isIOS ? 'Download on the App Store' : 'Get it on Google Play';
+        storeBtn.style.display = 'inline-block';
+        msg.textContent = 'Get the Zumpa app to view this content.';
+
+        // Give the deep-link attempt a short window before we redirect.
+        var didLeave = false;
+        document.addEventListener('visibilitychange', function () { didLeave = true; });
+        window.addEventListener('blur', function () { didLeave = true; });
+
+        try { window.location.href = deepLink; } catch (e) {}
+
+        setTimeout(function () {
+          if (!didLeave) window.location.href = storeUrl;
+        }, 2000);
+      } else {
+        // Desktop — show both store buttons
+        storeBtn.href        = IOS_URL;
+        storeBtn.textContent = 'Download on the App Store';
+        storeBtn.style.display = 'inline-block';
+
+        altBtn.href        = ANDROID_URL;
+        altBtn.textContent = 'Get it on Google Play';
+        altBtn.style.display = 'inline-block';
+
+        msg.textContent = 'Scan the link on your phone or download Zumpa below.';
+      }
+    })();
+  </script>
+</body>
+</html>

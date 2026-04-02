@@ -1,0 +1,15 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["CEAY749BDE.com.zumpa.zumpa"],
+        "components": [
+          {
+            "/": "/share/*",
+            "comment": "Match all share deep links"
+          }
+        ]
+      }
+    ]
+  }
+}
