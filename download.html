@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Download Zumpa</title>
+  <meta property="og:title" content="Download Zumpa" />
+  <meta property="og:description" content="Connect with top artists, performers, and event professionals. Post gigs, hire talent — all in one app." />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #541AA3;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      padding: 24px;
+      text-align: center;
+    }
+    h1 { font-size: 2rem; font-weight: 800; }
+    p  { font-size: 1rem; opacity: 0.85; max-width: 320px; line-height: 1.5; }
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      border-radius: 999px;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      background: #fff;
+      color: #541AA3;
+      min-width: 220px;
+    }
+    .btn + .btn { background: rgba(255,255,255,0.15); color: #fff; border: 2px solid rgba(255,255,255,0.4); }
+  </style>
+</head>
+<body>
+  <h1>Zumpa</h1>
+  <p id="msg">Taking you to the store…</p>
+  <a id="primary-btn" class="btn" href="#" style="display:none"></a>
+  <a id="secondary-btn" class="btn" href="#" style="display:none"></a>
+
+  <script>
+    (function () {
+      var IOS_URL     = 'https://apps.apple.com/app/id6761260769';
+      var ANDROID_URL = 'https://play.google.com/store/apps/details?id=com.zumpa.zumpa';
+
+      var isIOS     = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+      var isAndroid = /Android/.test(navigator.userAgent);
+
+      var primaryBtn   = document.getElementById('primary-btn');
+      var secondaryBtn = document.getElementById('secondary-btn');
+      var msg          = document.getElementById('msg');
+
+      if (isIOS) {
+        window.location.replace(IOS_URL);
+      } else if (isAndroid) {
+        window.location.replace(ANDROID_URL);
+      } else {
+        // Desktop — show both buttons
+        msg.textContent = 'Open this link on your phone, or choose your store below.';
+
+        primaryBtn.href        = IOS_URL;
+        primaryBtn.textContent = 'Download on the App Store';
+        primaryBtn.style.display = 'inline-block';
+
+        secondaryBtn.href        = ANDROID_URL;
+        secondaryBtn.textContent = 'Get it on Google Play';
+        secondaryBtn.style.display = 'inline-block';
+      }
+    })();
+  </script>
+</body>
+</html>

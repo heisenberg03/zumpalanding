@@ -10,6 +10,7 @@
     }
   ],
   "rewrites": [
-    { "source": "/share/(.*)", "destination": "/share-redirect.html" }
+    { "source": "/share/(.*)", "destination": "/share-redirect.html" },
+    { "source": "/download", "destination": "/download.html" }
   ]
 }
