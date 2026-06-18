@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Zumpa Landing Page
 
-## Getting Started
+A modern, responsive landing page built with Next.js, React, and Tailwind CSS.
 
-First, run the development server:
+## 🚀 Quick Start
+
+First, install dependencies and run the development server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠 Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+*   **Framework:** [Next.js 16](https://nextjs.org/)
+*   **UI Library:** [React 19](https://react.dev/)
+*   **Styling:** [Tailwind CSS 4](https://tailwindcss.com/)
+*   **Language:** [TypeScript](https://www.typescriptlang.org/)
 
-## Learn More
+## 🌟 Overview
 
-To learn more about Next.js, take a look at the following resources:
+This is the codebase for the Zumpa Landing page. It demonstrates modern web development practices including component-based architecture, responsive design, and performance optimization using Next.js.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📁 Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+*   `src/` - Application source code
+*   `public/` - Static assets like images and icons
+*   `next.config.ts` - Next.js configuration
 
-## Deploy on Vercel
+## 🤝 Contributing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Contributions, issues and feature requests are welcome!
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📝 License
+
+This project is intended for portfolio demonstration.
