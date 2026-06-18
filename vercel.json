@@ -11,6 +11,9 @@
   ],
   "rewrites": [
     { "source": "/share/(.*)", "destination": "/share-redirect.html" },
-    { "source": "/download", "destination": "/download.html" }
+    { "source": "/download", "destination": "/download.html" },
+    { "source": "/privacy", "destination": "/privacy/index.html" },
+    { "source": "/terms", "destination": "/terms/index.html" },
+    { "source": "/delete-account", "destination": "/delete-account/index.html" }
   ]
 }
