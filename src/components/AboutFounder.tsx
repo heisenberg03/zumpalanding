@@ -34,13 +34,13 @@ export default function AboutFounder() {
               </h2>
 
               <p className="founder-story">
-                Zumpa was conceived and built by <strong>Abhash Mishra</strong>{' '}to solve a fundamental challenge in the entertainment and event industry: middleman friction and opaque booking practices. Zumpa empowers creative professionals and gig specialists with direct stage discovery, while providing event hosts a verified, seamless platform to hire exceptional talent with confidence.
+                Zumpa was conceived and built by <strong>Abhash Mishra</strong>{' '}to solve a fundamental challenge in the entertainment and event industry: middleman friction and opaque booking practices. Zumpa empowers creative professionals and gig specialists with direct stage discovery, while providing event hosts a trusted, community-driven platform to hire exceptional talent with confidence.
               </p>
 
               <div className="founder-quote-box">
                 <span className="quote-mark" aria-hidden="true">&ldquo;</span>
                 <p className="quote-text">
-                  We are reimagining the entertainment industry by empowering gig and event professionals. Our mission with Zumpa is to provide a transparent, friction-free stage where creative talent thrives, and hosts book verified pros with total confidence.
+                  We are reimagining the entertainment industry by empowering gig and event professionals. Our mission with Zumpa is to provide a transparent, friction-free stage where creative talent thrives, and hosts book with genuine trust and community confidence.
                 </p>
                 <div className="quote-by">
                   <span className="quote-author">Abhash Mishra</span>
