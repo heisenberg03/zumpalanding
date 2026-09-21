@@ -76,6 +76,7 @@ const jsonLd = {
       },
       "sameAs": [
         "https://www.linkedin.com/company/zumpa",
+        "https://www.instagram.com/zumpaofficial/",
         "https://x.com/MRAbhashMishra",
       ],
     },
