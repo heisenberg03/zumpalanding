@@ -30,17 +30,17 @@ export default function AboutFounder() {
             <div className="founder-narrative-col">
               <span className="label">The Founder&apos;s Vision</span>
               <h2 className="sec-title founder-headline">
-                Reimagining how India discovers, books, and celebrates live talent.
+                Reimagining the entertainment industry for gig professionals.
               </h2>
 
               <p className="founder-story">
-                Zumpa was conceived and built by <strong>Abhash Mishra</strong> to solve a fundamental challenge in India&apos;s entertainment and event industry: middleman friction and opaque booking practices. Zumpa empowers artists, musicians, anchors, and event specialists with direct stage discovery, while providing event hosts a verified, seamless platform to hire exceptional talent with confidence.
+                Zumpa was conceived and built by <strong>Abhash Mishra</strong>{' '}to solve a fundamental challenge in the entertainment and event industry: middleman friction and opaque booking practices. Zumpa empowers creative professionals and gig specialists with direct stage discovery, while providing event hosts a verified, seamless platform to hire exceptional talent with confidence.
               </p>
 
               <div className="founder-quote-box">
                 <span className="quote-mark" aria-hidden="true">&ldquo;</span>
                 <p className="quote-text">
-                  India is home to unmatched creative brilliance. Our mission with Zumpa is to give every artist a transparent stage to build a thriving career, and give every host an effortless way to create unforgettable events.
+                  We are reimagining the entertainment industry by empowering gig and event professionals. Our mission with Zumpa is to provide a transparent, friction-free stage where creative talent thrives, and hosts book verified pros with total confidence.
                 </p>
                 <div className="quote-by">
                   <span className="quote-author">Abhash Mishra</span>

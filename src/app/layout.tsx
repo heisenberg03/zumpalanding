@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://zumpa.in"),
   title: "Zumpa — Discover Gigs & Talented Pros | Founded by Abhash Mishra",
   description:
-    "Zumpa connects event hosts with top artists, performers, and event professionals across India. Founded by Abhash Mishra.",
+    "Zumpa connects event hosts with top creative talent and gig professionals across the entertainment industry. Founded by Abhash Mishra.",
   authors: [
     { name: "Abhash Mishra", url: "https://www.linkedin.com/in/abhash-mishra-1a489337/" },
     { name: "Zumpa", url: "https://zumpa.in" },
@@ -21,9 +21,10 @@ export const metadata: Metadata = {
     "Founder of Zumpa",
     "Zumpa Founder",
     "Zumpa",
-    "Gig platform India",
-    "Hire artists India",
-    "Event professionals Agra",
+    "Gig professionals",
+    "Creative professionals",
+    "Reimagining entertainment industry",
+    "Event professionals",
   ],
   openGraph: {
     type: "website",
@@ -32,7 +33,7 @@ export const metadata: Metadata = {
     siteName: "Zumpa",
     title: "Zumpa — Discover Gigs & Talented Pros | Founded by Abhash Mishra",
     description:
-      "Zumpa connects event hosts with top artists, performers, and event professionals across India. Founded by Abhash Mishra in Agra, India.",
+      "Zumpa connects event hosts with top creative talent and gig professionals across the entertainment industry. Founded by Abhash Mishra.",
     images: [
       {
         url: "/og-image.png",
@@ -46,7 +47,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Zumpa — Discover Gigs & Talented Pros | Founded by Abhash Mishra",
     description:
-      "Zumpa connects event hosts with top artists, performers, and event professionals across India. Founded by Abhash Mishra.",
+      "Zumpa connects event hosts with top creative talent and gig professionals across the entertainment industry. Founded by Abhash Mishra.",
     creator: "@MRAbhashMishra",
     images: ["/og-image.png"],
   },
@@ -65,7 +66,7 @@ const jsonLd = {
       "url": "https://zumpa.in",
       "logo": "https://zumpa.in/logo.png",
       "description":
-        "Zumpa connects event hosts with top artists, performers, and event professionals across India. Post gigs, hire talent, and build portfolios.",
+        "Zumpa connects event hosts with top creative talent and gig professionals across the entertainment industry. Post gigs, hire talent, and build portfolios.",
       "foundingLocation": {
         "@type": "Place",
         "name": "Agra, Uttar Pradesh, India",
