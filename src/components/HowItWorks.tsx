@@ -62,7 +62,7 @@ export default function HowItWorks() {
             </div>
             <div className="step">
               <div className="step-num step-num-orange">4</div><h3 className="step-title">Get Confirmed</h3>
-              <p className="step-desc">When a host accepts, you're booked. Track all your gigs and messages in-app.</p>
+              <p className="step-desc">When a host accepts, you&apos;re booked. Track all your gigs and messages in-app.</p>
             </div>
           </div>
         )}

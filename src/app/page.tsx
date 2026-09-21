@@ -8,6 +8,7 @@ import TrendingEvents from '@/components/TrendingEvents';
 import OurNetwork from '@/components/OurNetwork';
 import HowItWorks from '@/components/HowItWorks';
 import Features from '@/components/Features';
+import AboutFounder from '@/components/AboutFounder';
 import CTASection from '@/components/CTASection';
 import Footer from '@/components/Footer';
 
@@ -17,10 +18,10 @@ export default function Home() {
       if(!el.classList.contains('hero')) { el.classList.add('reveal'); }
     });
     function reveal() {
-      var reveals = document.querySelectorAll('.reveal');
-      for (var i = 0; i < reveals.length; i++) {
-        var windowHeight = window.innerHeight;
-        var elementTop = reveals[i].getBoundingClientRect().top;
+      const reveals = document.querySelectorAll('.reveal');
+      for (let i = 0; i < reveals.length; i++) {
+        const windowHeight = window.innerHeight;
+        const elementTop = reveals[i].getBoundingClientRect().top;
         if (elementTop < windowHeight - 100) { reveals[i].classList.add('active'); }
       }
     }
@@ -40,6 +41,7 @@ export default function Home() {
       <OurNetwork />
       <HowItWorks />
       <Features />
+      <AboutFounder />
       <CTASection />
       <Footer />
     </>

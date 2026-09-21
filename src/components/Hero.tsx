@@ -4,7 +4,7 @@ export default function Hero() {
       <div className="hero-bg"></div>
       <h1>Discover Gigs &<br/><em>Talented Pros</em></h1>
       <p className="hero-sub">
-        Whether you're organising an event or looking for your next gig — Zumpa connecting gigs and professionals.
+        Whether you&apos;re organising an event or looking for your next gig — Zumpa connecting gigs and professionals.
       </p>
       <div className="btn-row">
         <a href="https://apps.apple.com/app/id6761260769" className="dl-btn" target="_blank" rel="noopener noreferrer">
